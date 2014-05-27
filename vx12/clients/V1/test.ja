@@ -1,0 +1,10 @@
+
+void setup(){
+	live int x;
+	x = 6;
+}
+main() {
+
+	test(10, "dfdfd");
+}
+

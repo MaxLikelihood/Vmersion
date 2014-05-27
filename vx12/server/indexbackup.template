@@ -1,0 +1,175 @@
+<!DOCTYPE html> 
+<html lang="en">
+    <head>
+        <title>vx12 Application</title>
+
+        <!-- Color Pallete styling -->
+
+       
+        <!-- Color Pallete Styling ends -->
+
+        <link type="text/css" rel="Stylesheet" href="jqueryui/css/redmond/jquery-ui-1.8.17.custom.css" />
+        <link type="text/css" rel="Stylesheet" href="jqueryui/css/default.css" />
+        <link type="text/css" rel="Stylesheet" href="2/custom.css" id="app" />
+        <script type="text/javascript" src="jqueryui/js/jquery-1.7.1.min.js" ></script>
+        <script type="text/javascript" src="jqueryui/js/jquery-ui-1.8.17.custom.min.js"></script>
+        <script type="text/javascript" src="jqueryui/js/processing-1.3.6.js" ></script> 
+        <script type="text/javascript" src="jqueryui/js/draw_functions.js" ></script>
+        <script type="text/javascript" src="jqueryui/js/key_mouse.js" ></script>
+        <script type="text/javascript" src="jqueryui/js/base64.js" ></script>
+        
+        <script src="jqueryui/js/three.min.js"></script>
+		<script src="jqueryui/js/Three.js"></script>
+		<script src="jqueryui/js/Detector.js"></script>
+		<script src="jqueryui/js/stats.js"></script>
+		<script src="jqueryui/js/OrbitControls.js"></script>
+		<script src="jqueryui/js/THREEx.KeyboardState.js"></script>
+		<script src="jqueryui/js/THREEx.FullScreen.js"></script>
+		<script src="jqueryui/js/THREEx.WindowResize.js"></script>
+        
+        <script src="jqueryui/js/ParticleEngine.js"></script>
+        <script src="jqueryui/js/ParticleEngineExamples.js"></script>
+
+        <!-- GUI for experimenting with values -->      
+        <script type='text/javascript' src='jqueryui/js/DAT.GUI.min.js'></script>
+
+        <!-- jQuery code to display an information button and box when clicked. -->
+        <script src="jqueryui/js/jquery-1.9.1.js"></script>
+        <script src="jqueryui/js/jquery-ui.js"></script>
+        <link rel=stylesheet href="jqueryui/css/jquery-ui.css" />
+        
+        <link type="text/css" rel="stylesheet" href="jqueryui/minicolors/jquery.miniColors.css" />
+        <script type="text/javascript" src="jqueryui/minicolors/jquery.miniColors.min.js"></script>
+        <script type="text/javascript" src="scripttest.js"></script>
+        <script language='javascript'>
+         // var ws_server = "ws://localhost:7070%(id)s";
+          //var ws_server = "ws://localhost:7070";
+          var ws_server = "ws://192.168.54.15:7070";
+            var ws_video = new WebSocket("ws://localhost:7070/video");
+            $(function() {
+                var image = document.getElementById('image');
+                ws_video.onmessage = function (e) {
+                    image.src = window.URL.createObjectURL(e.data);
+                };
+            });
+          // standard global variables for Three.js setup
+            var container, scene, camera, renderer, controls, stats;
+            var keyboard = new THREEx.KeyboardState();
+            var clock = new THREE.Clock();
+        </script>
+        <style>
+            body {margin: 4px;}
+            .color {
+            height: 50px;
+            width: 50px;
+            float: left;
+            margin: 5px;
+            border: 1px solid #ccc;
+            }
+            #hue-box {
+                margin-left: 20px;
+                margin-top: -19px;
+            }   
+            .bordered {
+                border-top: 1px solid #ccc;
+            }
+    
+            #hex-box {
+                background-color: #fff;
+                position: relative;
+                top: -15px;
+                left: -60px;
+            }
+        </style>
+        <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/css/smoothness/jquery-ui-1.10.0.custom.min.css" rel="stylesheet">
+        </style>
+   
+        
+    </head>
+    <body ng-app>
+
+        <div class="ui-widget-content draggable" style="border: transparent; padding:0px; margin:0px; height:500px; width:500px; background:transparent; z-index: 0;" >
+            <canvas id="root" style="border: solid 0px #000000; position: absolute;"></canvas>
+            <img id="image" style="padding-left:1px;padding-top:1px; z-index: 0;" height="480px" width="640px"/>
+        </div>
+        <!-- <div id="smartbox" style="border:solid 2px black; position:absolute; top:30px; left:30px; height:60px; width:60px; z-index: 1;"/> -->
+        <img id="smartbox" src="images/lampOff.jpg" style="position:absolute; top:60px; left:60px; height:60px; width:60px; z-index: 1;" />
+
+       <!-- Color Pallete portion starts -->            
+
+        <div class="container">
+   
+        <div class="row">
+        <div class="span12">
+        <h2 id="tryit">Color Pallete!</h2>
+        </div>
+        <div class="row">
+        <div class="span12">
+          <div class="offset1">
+            <div class="row">
+              <div class="span12"><strong class="span1 pull-left">Hue</strong>
+                <div id="hue-slider" class="span5"></div>
+                <div id="hue-box" style="background-color: #ffffff" class="color middle"></div>
+              </div>
+            </div>
+            <div class="row">&nbsp;</div>
+            <div class="row">
+              <div class="span3"><strong class="span1 pull-left">Hex</strong>
+                <div class="input-append">
+                  <input id="hex" type="text" name="hex" maxlength="6" class="span1">
+                  <button type="button" id="set-hex" class="btn">Set</button>
+                </div>
+              </div>
+              <div class="span1">
+                <div id="hex-box" class="color middle"></div>
+                <div class="clearfix"></div>
+              </div>
+<!--               <div class="span4"><small>(Note: this functions a bit differently from setting the hue above; it will create a custom variation "preset" that differs from any of the below options)</small></div>
+ -->            </div>
+            <div class="row bordered">&nbsp;</div>
+
+          <!--   <div class="row">&nbsp;</div>
+            <div class="row"> -->
+            <div class="span3"><strong class="span1 pull-left">Red</strong>
+                <div class="input-append">
+                  <input id="red" type="text" name="red" maxlength="6" class="span1">
+                </div>
+            </div>
+           <!--  </div>
+            <div class="row bordered">&nbsp;</div> -->
+
+
+<!--             <div class="row">&nbsp;</div>
+            <div class="row"> -->
+            <div class="span3"><strong class="span1 pull-left">Green</strong>
+                <div class="input-append">
+                  <input id="green" type="text" name="green" maxlength="6" class="span1">
+                </div>
+            </div>
+           <!--  </div>
+            <div class="row bordered">&nbsp;</div> -->
+
+
+<!--             <div class="row">&nbsp;</div>
+            <div class="row"> -->
+            <div class="span3"><strong class="span1 pull-left">Blue</strong>
+                <div class="input-append">
+                  <input id="blue" type="text" name="blue" maxlength="6" class="span1">
+                </div>
+            </div>
+<!--             </div>
+            <div class="row bordered">&nbsp;</div> -->
+ 
+            </div>
+            <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+            <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>
+            <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+            <script src="colorlib/color-scheme.min.js"></script>
+           
+            <!--Color portion ends -->
+  
+    </body>
+</html>
+
+
