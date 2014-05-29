@@ -333,7 +333,7 @@
         <div class="login">
                 <input id ='txt' type="text" placeholder="username" name="user"><br>
                 <input type="password" placeholder="password" name="password"><br>
-                <input type="button" value="Login" onclick = 'keyEvent()'>
+                <input id="system-default-login-btn" type="button" value="Login" onclick = 'keyEvent()'>
                 <input id="system-fb-login-btn" type="button" value="Login with Facebook" onclick = "loginWithFacebook()">
         </div>
 
