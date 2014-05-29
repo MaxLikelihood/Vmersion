@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <title>vx12 Application</title>
-
+        <link href="http://netdna.bootstrapcdn.com//font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
         <link type="text/css" rel="Stylesheet" href="jqueryui/css/redmond/jquery-ui-1.8.17.custom.css" />
         <link type="text/css" rel="Stylesheet" href="jqueryui/css/default.css" />
         <link type="text/css" rel="Stylesheet" href="2/custom.css" id="app" />
@@ -58,14 +58,193 @@
             {
                 ws_video.send('logged in');
             }   
-          // standard global variables for Three.js setup
+            // standard global variables for Three.js setup
             var container, scene, camera, renderer, controls, stats;
             var keyboard = new THREEx.KeyboardState();
             var clock = new THREE.Clock();
         </script>
+        
+
+
         <style>
             body {margin: 4px;
                 }
+
+
+            .container {
+              width: 200px;
+              height: 200px;
+              top: 15%;
+              left: 50%;
+              /*border: 1px solid #CCC;*/
+              margin: 0 auto 40px;
+              position: absolute;
+              z-index: 2;
+        
+            }
+
+            .box {
+              width: 250px;
+              height: 200px;
+            }
+
+
+            #blue {
+              -webkit-perspective: 600px;
+                 -moz-perspective: 600px;
+                   -o-perspective: 600px;
+                      perspective: 600px;
+            }
+
+            #blue .box {
+            /*     display: block;
+              position: absolute;
+              z-index: 2;
+              cursor: pointer;*/
+              z-index: 2;
+                  background-color: rgba(240, 177, 82, 0.2);
+              -webkit-transform: rotateY( -25deg );
+                 -moz-transform: rotateY( -25deg );
+                   -o-transform: rotateY( -25deg );
+                      transform: rotateY( -25deg );
+            }
+
+
+            /***********CSS for the robotic arm*************/
+
+
+            /********Base*************/
+
+            #menuBase{
+                display: none;
+            }
+
+
+            #Base{
+                position: absolute;
+                height: 175px;
+                width: 125px;
+                top: 72%;
+                left: 37%;
+                z-index: 1;
+                cursor: pointer;
+                background-color: yellow;
+                opacity: 0.1;
+            }
+
+            #outerBase{
+                position: absolute;
+                height: 225px;
+                width: 175px;
+                top: 70%;
+                left: 35%;
+                z-index: 1;
+                cursor: pointer;
+                background-color: white;
+                opacity: 0.1;
+            }
+
+           
+
+            /*********Body*****************/
+
+            #menuBody{
+                display: none;
+            }
+
+
+            #Body{
+                position: absolute;
+                 height: 175px;
+                width: 125px;
+                top: 72%;
+                left: 60%;
+                z-index: 1;
+                cursor: pointer;
+                background-color: red;
+                opacity: 0.1;
+            }
+
+            #outerBody{
+                position: absolute;
+                height: 225px;
+                width: 175px;
+                top: 70%;
+                left: 59%;
+                z-index: 1;
+                cursor: pointer;
+                background-color: blue;
+                opacity: 0.1;
+            }
+
+
+
+            /***********Head**************************/
+
+            #menu1{
+                display: none;
+            }
+
+
+            #lamp1{
+                position: absolute;
+                height: 175px;
+                width: 125px;
+                top: 38%;
+                left: 48%;
+                z-index: 1;
+                cursor: pointer;
+                background-color: green;
+                opacity: 0.1;
+            }
+
+            #outer1{
+                position: absolute;
+                height: 225px;
+                width: 175px;
+                top: 36%;
+                left: 46%;
+                z-index: 1;
+                background-color: blue;
+                opacity: 0.1;
+                cursor: pointer;
+            }
+
+
+            
+            /***********Hand******************/
+
+             #menuHand{
+                display: none;
+            }
+
+
+            #Hand{
+                position: absolute;
+                 height: 175px;
+                width: 125px;
+                top: 34%;
+                left: 66%;
+                z-index: 1;
+                cursor: pointer;
+                background-color: purple;
+                opacity: 0.1;
+            }
+
+            #outerHand{
+                position: absolute;
+                height: 225px;
+                width: 175px;
+                top: 32%;
+                left: 64%;
+                z-index: 1;
+                cursor: pointer;
+                background-color: maroon;
+                opacity: 0.1;
+            }
+
+            /******Robotic Arm css ends*******************/
+
             .color {
             height: 50px;
             width: 50px;
@@ -98,7 +277,7 @@
 
         <div align = "center" class="ui-widget-content" style="border: transparent; padding:0px; margin:0px; height:720px; width:1280px; background:transparent; z-index: 0;" >
             <canvas id="root" style="border: solid 0px #000000; position: absolute;"></canvas>
-            <img id="image"  style="position:absolute; top:50px; left:50px; z-index: 0; height:720px; width:1280px;"/>
+            <img id="image"  style="position:absolute; top:50px; left:50px; z-index: 0; width: 100%;"/>
         </div>
 
         <!-- <div id="smartbox" style="border:solid 2px black; position:absolute; top:30px; left:30px; height:60px; width:60px; z-index: 1;"/> -->
@@ -119,9 +298,118 @@
 
         <!-- Login portion ends -->
 
+
+        <!-- Slanted div with information -->
+
+        <section id="blue" class="container">
+            <div class="box"> Vmersion smart devices<br>
+            <div id = 'mainMenu'>
+                <i class="fa fa-lightbulb-o fa-2x" ></i> Lamp1<br> <br>
+            </div>
+            <i id ='rotation1' class="fa fa-cog fa-spin fa-2x"></i> Robotic Arm<br> <br>
+            <i id = 'light1' class="fa fa-lightbulb-o fa-2x"></i>  Lamp2<br> <br>
+            
+            </div>
+        </section>
+
+        <!--  Robot Arm starts-->
+        
+        <!-- Div for Base -->
+        <div id = 'outerBase'></div>
+
+        <div id ='Base'></div>
+
+        <div id = 'menuBase'>  <br>
+            
+            <div id = 'speedBase' > 
+                <i class = "fa fa-cog fa-spin fa-2x"></i><br>
+            </div> 
+            
+            <div id = 'bwBase' > 
+                <i class="fa fa-arrow-left fa-2x" ></i> <br>  
+            </div>
+            
+            <div id = 'fwBase' > 
+                <i class="fa fa-arrow-right fa-2x"></i>
+             </div> 
+            
+        </div>
+
+        <!-- Div for Body -->
+        <div id = 'outerBody'></div>
+
+        <div id ='Body'></div>
+
+        <div id = 'menuBody'>  <br>
+            
+            <div id = 'speedBody' > 
+                <i class = "fa fa-cog fa-spin fa-2x"></i><br>
+            </div> 
+            
+            <div id = 'bwBody'> 
+                <i class="fa fa-arrow-left fa-2x" ></i> <br> 
+            </div>
+            
+            <div id = 'fwBody' > 
+                <i class="fa fa-arrow-right fa-2x"></i>
+             </div> 
+            
+        </div>
+
+
+
+        <!-- Div for the head -->
+        <div id = 'outer1'></div>
+
+        <div id ='lamp1'></div>
+
+        <div id = 'menu1'>  <br>
+            
+            <div id = 'camera1' style = "float:left;">
+                <i class="fa fa-lightbulb-o fa-2x" ></i> &nbsp; &nbsp;
+            </div>
+            <div id = 'speedHead' > 
+                <i class = "fa fa-cog fa-spin fa-2x"></i><br><br>
+            </div> 
+            
+            <div id = 'bwHead'  style = "float:left;"> 
+                <i class="fa fa-arrow-left fa-2x" ></i> &nbsp; &nbsp; 
+            </div>
+            
+            <div id = 'fwHead' > 
+                <i class="fa fa-arrow-right fa-2x"></i>
+             </div> 
+            
+        </div>
+
+        <!-- Div for hand -->
+
+        <div id = 'outerHand'></div>
+
+        <div id ='Hand'></div>
+
+        <div id = 'menuHand'>  <br>
+
+            <div id = 'speedHand' > 
+                <i class = "fa fa-cog fa-spin fa-2x"></i><br>
+            </div> 
+            
+            <div id = 'bwHand' > 
+                <i class="fa fa-arrow-left fa-2x" ></i> <br>
+            </div>
+            
+            <div id = 'fwHand' > 
+                <i class="fa fa-arrow-right fa-2x"></i>
+             </div> 
+            
+        </div>
+
+
+
+
        <!-- Color Pallete portion starts -->            
 
-        <div class="container">
+        <div class="container2">
         <div class="row">
         <div class="span12">
           <div class="offset1">

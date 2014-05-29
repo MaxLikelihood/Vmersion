@@ -103,8 +103,8 @@ class VxHTTPServer(tornado.httpserver.HTTPServer):
 		templateFile.close()
 		
 		# Inject correct handler into html
-		html = template % {'id':handler, 'appid':appid}
-		
+		#html = template % {'id':handler, 'appid':appid}
+		html = template
 		# Write html
 		self.send_page(request, html)
 	
