@@ -49,7 +49,7 @@ function loginWithFacebook()
       setTimeout(function(){$('.login').fadeOut(2000);}, 2000);
       console.log('connected');
       facebook_login = true;
-      setTimeout(function(){keyEvent();}, 4000);
+      loadInterface();
     } 
     else 
     {
@@ -63,7 +63,7 @@ function loginWithFacebook()
           setTimeout(function(){$('.login').fadeOut(2000);}, 2000);
           console.log('connected');
           facebook_login = true;
-          setTimeout(function(){keyEvent();}, 4000);
+          loadInterface();
         }
         else if (response.status === 'not_authorized')
         {
