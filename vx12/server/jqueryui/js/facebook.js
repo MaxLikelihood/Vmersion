@@ -39,9 +39,32 @@ function checkLoginState() {
 function loginWithFacebook()
 {
   FB.getLoginStatus(function(response) {
-    stage = 'system-login'
-    statusChangeCallback(response, stage);
-    keyEvent();
+    if (response.status === 'connected')
+    {
+      //app authorized and logged into facebook
+      console.log("connected");
+      //keyEvent();
+    } 
+    else 
+    {
+      //app not authorized or not logged into facebook
+      //login on popup window
+      FB.login(function(response) {
+        if (response.status === 'connected')
+        {
+          console.log("connected");
+          //keyEvent();
+        }
+        else if (response.status === 'not_authorized')
+        {
+          console.log("not_authorized");
+        }
+        else
+        {
+          console.log("not logged in to facebook");
+        }
+      });
+    }
   });
 }
 
