@@ -1,3 +1,5 @@
+var facebook_login = false;
+
 // This is called with the results from from FB.getLoginStatus().
 function statusChangeCallback(response, stage) {
   console.log('statusChangeCallback');
@@ -46,7 +48,8 @@ function loginWithFacebook()
       document.getElementById('system-fb-login-btn').value = 'Connected!';
       setTimeout(function(){$('.login').fadeOut(2000);}, 2000);
       console.log('connected');
-      //keyEvent();
+      facebook_login = true;
+      setTimeout(function(){keyEvent();}, 4000);
     } 
     else 
     {
@@ -59,7 +62,8 @@ function loginWithFacebook()
           document.getElementById('system-fb-login-btn').value = 'Connected!';
           setTimeout(function(){$('.login').fadeOut(2000);}, 2000);
           console.log('connected');
-          //keyEvent();
+          facebook_login = true;
+          setTimeout(function(){keyEvent();}, 4000);
         }
         else if (response.status === 'not_authorized')
         {
