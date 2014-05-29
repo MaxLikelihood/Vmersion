@@ -36,6 +36,14 @@ function checkLoginState() {
   });
 }
 
+function loginWithFacebook()
+{
+  FB.getLoginStatus(function(response) {
+    stage = 'system-login'
+    statusChangeCallback(response, stage);
+    keyEvent();
+  });
+}
 
 
 // Here we run a very simple test of the Graph API after login is
