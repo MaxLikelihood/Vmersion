@@ -42,7 +42,8 @@ function loginWithFacebook()
     if (response.status === 'connected')
     {
       //app authorized and logged into facebook
-      console.log("connected");
+      document.getElementById('system-fb-login-btn').value = 'Connected!';
+      console.log('connected');
       //keyEvent();
     } 
     else 
@@ -52,16 +53,17 @@ function loginWithFacebook()
       FB.login(function(response) {
         if (response.status === 'connected')
         {
-          console.log("connected");
+          document.getElementById('system-fb-login-btn').value = 'Connected!';
+          console.log('connected');
           //keyEvent();
         }
         else if (response.status === 'not_authorized')
         {
-          console.log("not_authorized");
+          console.log('not_authorized');
         }
         else
         {
-          console.log("not logged in to facebook");
+          console.log('not logged in to facebook');
         }
       });
     }
