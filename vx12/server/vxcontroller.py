@@ -51,14 +51,15 @@ class VxController:
 	### Application Management ###
 	
 	# Get the next application id
-	def nextApplicationID(self):
+	def nextApplicationID(self, address):
+		print 'Application Client Address: ' + str(address[0]) + ' port: ' + str(address[1])
 		appid = self.appID
 		self.appID = self.appID + 1
 		return str(appid)
 		
 	# Register a connected client application
 	def registerApplication(self, address, appHandler):
-		appid = self.nextApplicationID()
+		appid = self.nextApplicationID(address)
 		
 		app = {}
 		# Set application information

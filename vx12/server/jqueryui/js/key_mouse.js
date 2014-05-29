@@ -144,27 +144,11 @@ function init()
 
 
   this.engine = new ParticleEngine();
-  engine.setValues( Examples.startunnel );
+ // engine.setValues( Examples.startunnel );
   engine.initialize();
 
-  var smartdiv = document.getElementById("smartbox");
-  // smartdiv.style.cursor = 'pointer';
-  // smartdiv.onmouseover = function(){
-  //   //smartdiv.src = 'images/lampOn.jpg';
-  //   restartEngine( Examples.startunnel );
-  // };
-  // smartdiv.onmouseclick = function(){
-  //   restartEngine( Examples.startunnel );
-  // }
-  smartdiv.onmouseout = function(){
-   // smartdiv.style.backgroundColor = 'yellow';
-    smartdiv.src = 'images/lampOff.jpg';
-    //restartEngine( Examples.fireflies  );
-
-  };
-  // smartdiv.onmouseclick = function(){
-  //   restartEngine(Examples.startunnel);
-  // };
+ 
+  
   // GUI for experimenting with parameters
 
   gui = new dat.GUI();  
@@ -349,354 +333,13 @@ function render()
 
     /****************Color Pallete ends *********************/
 
-    /*****************Robotic Arm control**********************/
-  function robotHead(ws)
-  {
-      
-      /********** Controls for the LED *********************/
-      var cam1 = document.getElementById('camera1');
-      cam1.onmouseover = function(){
-        cam1.style.opacity = 0.5;
-        
-      }
-      cam1.onmousedown = function(){
-          //cam1.style.backgroundColor = 'blue';
-          ws.send("LEDSwitch\n");
-          cam1.style.zIndex = 1;
-          cam1.style.color = 'blue';
-      };
-      cam1.onmouseout = function(){
-          cam1.style.opacity = 1;
-          cam1.style.color = 'black';
-      } ;
-
-
-      /********** Controls for the head *********************/
-      /**  Note: Index: 2, Direction - Forward: 1, Backward: -1, Stop: 0   **/
-
-      var fwHead = document.getElementById('fwHead');
-      fwHead.style.color = 'black';
-      fwHead.onmouseover = function(){
-        fwHead.style.opacity = 0.5;
-        
-      }
-      fwHead.onmousedown = function(){
-          //cam1.style.backgroundColor = 'blue';
-          if(fwHead.style.color == 'black')
-          {
-            ws.send("moveMotor,2,1\n");
-            fwHead.style.zIndex = 1;
-            fwHead.style.color = 'blue';
-            bwHead.style.color = 'black';
-          }
-          else /*if(fwHead.style.color == 'blue')*/
-          {
-            ws.send("moveMotor,2,0\n");
-            fwHead.style.zIndex = 1;
-            fwHead.style.color = 'black'; 
-          }
-      };
-      fwHead.onmouseout = function(){
-          fwHead.style.opacity = 1;
-         // fwHead.style.color = 'black';
-      } ;
+  
 
 
 
-      var bwHead = document.getElementById('bwHead');
-      bwHead.style.color = 'black';
-      bwHead.onmouseover = function(){
-        bwHead.style.opacity = 0.5;
-        
-      }
-      bwHead.onmousedown = function(){
-          //cam1.style.backgroundColor = 'blue';
-          if(bwHead.style.color == 'black')
-          {
-            ws.send("moveMotor,2,-1\n");
-            bwHead.style.zIndex = 1;
-            bwHead.style.color = 'blue';
-            fwHead.style.color = 'black';
-          }
-          else 
-          {
-            ws.send("moveMotor,2,0\n");
-            bwHead.style.zIndex = 1;
-            bwHead.style.color = 'black'; 
-          }
-      };
-      bwHead.onmouseout = function(){
-          bwHead.style.opacity = 1;
-      } ;
+ 
 
-
-      var speedHead = document.getElementById('speedHead');
-      speedHead.onmouseover = function(){
-        speedHead.style.opacity = 0.5;
-        
-      }
-      speedHead.onmousedown = function(){
-          //cam1.style.backgroundColor = 'blue';
-          ws.send("setMotorSpeed,2,100\n");
-          speedHead.style.zIndex = 1;
-          speedHead.style.color = 'blue';
-      };
-      speedHead.onmouseout = function(){
-          speedHead.style.opacity = 1;
-          speedHead.style.color = 'black';
-      } ;
-
-
-  }
-
-
-/******************RobotBase ws based events ************************************/
-
-function robotBase(ws)
-  {
-
-
-      /********** Controls for the Base *********************/
-      /**  Note: Index: 0, Direction - Forward: 1, Backward: -1, Stop: 0   **/
-
-      var fwBase = document.getElementById('fwBase');
-      fwBase.style.color = 'black';
-      fwBase.onmouseover = function(){
-        fwBase.style.opacity = 0.5;
-        
-      }
-      fwBase.onmousedown = function(){
-          if(fwBase.style.color == 'black')
-          {
-            ws.send("moveMotor,0,1\n");
-            fwBase.style.zIndex = 1;
-            fwBase.style.color = 'blue';
-            bwBase.style.color = 'black';
-          }
-          else 
-          {
-            ws.send("moveMotor,0,0\n");
-            fwBase.style.zIndex = 1;
-            fwBase.style.color = 'black'; 
-          }
-      };
-      fwBase.onmouseout = function(){
-          fwBase.style.opacity = 1;
-      } ;
-
-
-
-      var bwBase = document.getElementById('bwBase');
-      bwBase.style.color = 'black';
-      bwBase.onmouseover = function(){
-        bwBase.style.opacity = 0.5;
-        
-      }
-      bwBase.onmousedown = function(){
-          //cam1.style.backgroundColor = 'blue';
-          if(bwBase.style.color == 'black')
-          {
-            ws.send("moveMotor,0,-1\n");
-            bwBase.style.zIndex = 1;
-            bwBase.style.color = 'blue';
-            fwBase.style.color = 'black';
-          }
-          else 
-          {
-            ws.send("moveMotor,0,0\n");
-            bwBase.style.zIndex = 1;
-            bwBase.style.color = 'black'; 
-          }
-      };
-      bwBase.onmouseout = function(){
-          bwBase.style.opacity = 1;
-      } ;
-
-
-      var speedBase = document.getElementById('speedBase');
-      speedBase.onmouseover = function(){
-        speedBase.style.opacity = 0.5;
-        
-      }
-      speedBase.onmousedown = function(){
-          //cam1.style.backgroundColor = 'blue';
-          ws.send("setMotorSpeed,0,100\n");
-          speedBase.style.zIndex = 1;
-          speedBase.style.color = 'blue';
-      };
-      speedBase.onmouseout = function(){
-          speedBase.style.opacity = 1;
-          speedBase.style.color = 'black';
-      } ;
-
-
-  }
-
-
-  /******************RobotBody ws based events ************************************/
-
-function robotBody(ws)
-  {
-
-
-      /********** Controls for the Body *********************/
-      /**  Note: Index: 1, Direction - Forward: 1, Backward: -1, Stop: 0   **/
-
-      var fwBody = document.getElementById('fwBody');
-      fwBody.style.color = 'black';
-      fwBody.onmouseover = function(){
-        fwBody.style.opacity = 0.5;
-        
-      }
-      fwBody.onmousedown = function(){
-          if(fwBody.style.color == 'black')
-          {
-            ws.send("moveMotor,1,1\n");
-            fwBody.style.zIndex = 1;
-            fwBody.style.color = 'blue';
-            bwBody.style.color = 'black';
-          }
-          else 
-          {
-            ws.send("moveMotor,1,0\n");
-            fwBody.style.zIndex = 1;
-            fwBody.style.color = 'black'; 
-          }
-      };
-      fwBody.onmouseout = function(){
-          fwBody.style.opacity = 1;
-      } ;
-
-
-
-      var bwBody = document.getElementById('bwBody');
-      bwBody.style.color = 'black';
-      bwBody.onmouseover = function(){
-        bwBody.style.opacity = 0.5;
-        
-      }
-      bwBody.onmousedown = function(){
-          //cam1.style.backgroundColor = 'blue';
-          if(bwBody.style.color == 'black')
-          {
-            ws.send("moveMotor,1,-1\n");
-            bwBody.style.zIndex = 1;
-            bwBody.style.color = 'blue';
-            fwBody.style.color = 'black';
-          }
-          else 
-          {
-            ws.send("moveMotor,1,0\n");
-            bwBody.style.zIndex = 1;
-            bwBody.style.color = 'black'; 
-          }
-      };
-      bwBody.onmouseout = function(){
-          bwBody.style.opacity = 1;
-      } ;
-
-
-      var speedBody = document.getElementById('speedBody');
-      speedBody.onmouseover = function(){
-        speedBody.style.opacity = 0.5;
-        
-      }
-      speedBody.onmousedown = function(){
-          //cam1.style.backgroundColor = 'blue';
-          ws.send("setMotorSpeed,1,100\n");
-          speedBody.style.zIndex = 1;
-          speedBody.style.color = 'blue';
-      };
-      speedBody.onmouseout = function(){
-          speedBody.style.opacity = 1;
-          speedBody.style.color = 'black';
-      } ;
-
-
-  }
-
-
-  /******************RobotBase ws based events ************************************/
-
-function robotHand(ws)
-  {
-
-
-      /********** Controls for the Hand *********************/
-      /**  Note: Index: 3, Direction - Forward: 1, Backward: -1, Stop: 0   **/
-
-      var fwHand = document.getElementById('fwHand');
-      fwHand.style.color = 'black';
-      fwHand.onmouseover = function(){
-        fwHand.style.opacity = 0.5;
-        
-      }
-      fwHand.onmousedown = function(){
-          if(fwHand.style.color == 'black')
-          {
-            ws.send("moveMotor,3,1\n");
-            fwHand.style.zIndex = 1;
-            fwHand.style.color = 'blue';
-            bwHand.style.color = 'black';
-          }
-          else 
-          {
-            ws.send("moveMotor,3,0\n");
-            fwHand.style.zIndex = 1;
-            fwHand.style.color = 'black'; 
-          }
-      };
-      fwHand.onmouseout = function(){
-          fwHand.style.opacity = 1;
-      } ;
-
-
-
-      var bwHand = document.getElementById('bwHand');
-      bwHand.style.color = 'black';
-      bwHand.onmouseover = function(){
-        bwHand.style.opacity = 0.5;
-        
-      }
-      bwHand.onmousedown = function(){
-          //cam1.style.backgroundColor = 'blue';
-          if(bwHand.style.color == 'black')
-          {
-            ws.send("moveMotor,3,-1\n");
-            bwHand.style.zIndex = 1;
-            bwHand.style.color = 'blue';
-            fwHand.style.color = 'black';
-          }
-          else 
-          {
-            ws.send("moveMotor,3,0\n");
-            bwHand.style.zIndex = 1;
-            bwHand.style.color = 'black'; 
-          }
-      };
-      bwHand.onmouseout = function(){
-          bwHand.style.opacity = 1;
-      } ;
-
-
-      var speedHand = document.getElementById('speedHand');
-      speedHand.onmouseover = function(){
-        speedHand.style.opacity = 0.5;
-        
-      }
-      speedHand.onmousedown = function(){
-          //cam1.style.backgroundColor = 'blue';
-          ws.send("setMotorSpeed,3,100\n");
-          speedHand.style.zIndex = 1;
-          speedHand.style.color = 'blue';
-      };
-      speedHand.onmouseout = function(){
-          speedHand.style.opacity = 1;
-          speedHand.style.color = 'black';
-      } ;
-
-
-  }
+ 
    
 
 
@@ -775,7 +418,7 @@ function implement(){
   ws[1] = new WebSocket(ws_server[1]);
   var canvas = document.getElementById("root");
   var parent = canvas.parentNode;
-  //var canvas = document.getElementById(key + "rt");
+
   // attaching the Processing engine to the canvas
   try
   {
@@ -786,18 +429,36 @@ function implement(){
     ws[0].onmessage = function(evt) {
         handleEvent("("+evt.data+")", p);
     };
+    
+    /*****************************************************************************************
+    ws[0]onopen() function starts, most ws.send manipulations and functions are here
+    *****************************************************************************************/
+
     ws[0].onopen = function(evt) {
         var str = "EVENT SETUP " + document.width + " " + document.height + "\n";
         ws[0].send(str);
-         var smartdiv = document.getElementById("smartbox");
-         smartdiv.style.cursor = 'pointer';
-         smartdiv.onmouseover = function(){
-    //smartdiv.src = 'images/lampOn.jpg';
-    
-          color(ws[1]);
-        };
         
-      
+    /*****************Lamp1*******************************/
+
+    /***Extracting the most dominant color in the background using Color Thief*****/
+    // var col = document.getElementById('col');
+    // var colorThief = new ColorThief();
+    // var dominantCol = colorThief.getColor(col);
+    // console.log("Dominant color r,g,b values " + dominantCol);
+
+
+    var outLamp1 = document.getElementById('outerLamp1');
+    var menuLamp1 = document.getElementById('menuLamp1');
+    var lamp1 = document.getElementById('Lamp1');
+    lamp1.onmouseover = function(){
+      menuLamp1.style.display = "block"; menuLamp1.style.position = "absolute"; menuLamp1.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuLamp1.style.height= '300px'; menuLamp1.style.width= '150px'; menuLamp1.style.top= '39%'; menuLamp1.style.left= '15%'; menuLamp1.style.zIndex= '2'; menuLamp1.style.cursor= 'pointer';
+      lampMenu(ws[1]);
+    }
+    
+    outLamp1.onmouseout = function(){
+      menuLamp1.style.display  = 'none';
+    }
+    
 
       /*************The base*****************/
 
@@ -829,15 +490,15 @@ function implement(){
       
       /*****The head portion***********/
       
-      var out1 = document.getElementById('outer1');
-      var menu1 = document.getElementById('menu1');
-      var lamp1 = document.getElementById('lamp1');
-      lamp1.onmouseover = function(){
-        menu1.style.display = "block"; menu1.style.position = "absolute"; menu1.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menu1.style.height= '150px'; menu1.style.width= '100px'; menu1.style.top= '38%'; menu1.style.left= '48%'; menu1.style.zIndex= '2'; menu1.style.cursor= 'pointer';
+      var outHead = document.getElementById('outerHead');
+      var menuHead = document.getElementById('menuHead');
+      var lampHead = document.getElementById('lampHead');
+      lampHead.onmouseover = function(){
+        menuHead.style.display = "block"; menuHead.style.position = "absolute"; menuHead.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuHead.style.height= '150px'; menuHead.style.width= '100px'; menuHead.style.top= '38%'; menuHead.style.left= '48%'; menuHead.style.zIndex= '2'; menuHead.style.cursor= 'pointer';
         robotHead(ws[0]);
       };
-      out1.onmouseout = function(){
-      menu1.style.display  = 'none';
+      outHead.onmouseout = function(){
+      menuHead.style.display  = 'none';
       }
 
       /***************The hand******************/
@@ -859,6 +520,8 @@ function implement(){
 
         sendExpose(ws[0]);
     };
+
+    /***************onopen() ends******************************************************/
     
 
     ws[0].onerror = function(evt) {
