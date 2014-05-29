@@ -47,7 +47,8 @@
           var ws_server = new Array();
           ws_server[0] = "ws://192.168.54.15:7070";
             var ws_video = new WebSocket("ws://localhost:7070/video");
-            $(function() {
+            $(document).ready(function() {
+                $('.login').hide().fadeIn(3000);
                 var image = document.getElementById('image');
                 ws_video.onmessage = function (e) {
                     image.src = window.URL.createObjectURL(e.data);
@@ -333,7 +334,7 @@
                 <input id ='txt' type="text" placeholder="username" name="user"><br>
                 <input type="password" placeholder="password" name="password"><br>
                 <input type="button" value="Login" onclick = 'keyEvent()'>
-                <input type="button" value="or Login with Facebook" onclick = "loginWithFacebook()">
+                <input id="system-fb-login-btn" type="button" value="or Login with Facebook" onclick = "loginWithFacebook()">
         </div>
 
         <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
