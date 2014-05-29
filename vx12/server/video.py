@@ -27,8 +27,11 @@ class videoSocketHandler(WebSocketHandler):
 
 
 def frost(image, ksize, weight):
+    # kernel size must be odd and positive
     if (ksize % 2 == 0):
         ksize += 1
+    if (ksize < 0):
+        ksize *=-1;
     dst = cv2.GaussianBlur(image, (ksize,ksize), 0)
     white = numpy.zeros(image.shape, numpy.uint8)
     white[:] = (255,255,255)
