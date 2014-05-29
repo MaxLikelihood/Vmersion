@@ -33,6 +33,10 @@ var ws = new Array();
 
 // custom global variables
 
+function loadInterface() {
+  setTimeout(function(){keyEvent();}, 5000);
+}
+
 function keyEvent() {
       unblur();
       var textval = document.getElementById('txt').value;
