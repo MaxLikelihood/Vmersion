@@ -19,6 +19,8 @@
         <script type="text/javascript" src="jqueryui/js/jquery-1.7.1.min.js" ></script>
         <script type="text/javascript" src="jqueryui/js/jquery-ui-1.8.17.custom.min.js"></script>
         <script type="text/javascript" src="jqueryui/js/processing-1.3.6.js" ></script> 
+        <!-- Load Facebook SDK -->
+        <script type="text/javascript" src='jqueryui/js/facebook.js'></script>
         <script type="text/javascript" src="jqueryui/js/draw_functions.js" ></script>
         <script type="text/javascript" src="jqueryui/js/key_mouse.js" ></script>
         <script type="text/javascript" src="jqueryui/js/base64.js" ></script>
@@ -59,7 +61,8 @@
           var ws_server = new Array();
           ws_server[0] = "ws://192.168.54.15:7070";
             var ws_video = new WebSocket("ws://localhost:7070/video");
-            $(function() {
+            $(document).ready(function() {
+                $('.login').hide().fadeIn(3000);
                 var image = document.getElementById('image');
                 ws_video.onmessage = function (e) {
                     image.src = window.URL.createObjectURL(e.data);
@@ -78,7 +81,46 @@
             var clock = new THREE.Clock();
         </script>
         
+        <script language='javascript'>
+            // Initial FB SDK
+            window.fbAsyncInit = function() {
+            FB.init({
+              appId      : '287835298059518',
+              cookie     : true,  // enable cookies to allow the server to access 
+                                  // the session
+              xfbml      : true,  // parse social plugins on this page
+              version    : 'v2.0' // use version 2.0
+            });
 
+            // Now that we've initialized the JavaScript SDK, we call 
+            // FB.getLoginStatus().  This function gets the state of the
+            // person visiting this page and can return one of three states to
+            // the callback you provide.  They can be:
+            //
+            // 1. Logged into your app ('connected')
+            // 2. Logged into Facebook, but not your app ('not_authorized')
+            // 3. Not logged into Facebook and can't tell if they are logged into
+            //    your app or not.
+            //
+            // These three cases are handled in the callback function.
+
+            FB.getLoginStatus(function(response) {
+              stage = 'onload'
+              statusChangeCallback(response, stage);
+            });
+
+            };
+
+            // Load the SDK asynchronously
+            (function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+              js.src = "//connect.facebook.net/en_US/sdk.js";
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+
+        </script>
 
         <style>
         /************CSS starts here********************************/   
@@ -320,10 +362,10 @@
         
     </head>
     <body style='background-color: black; '>
-
+        <div id="fb-root"></div>
         <div align = "center" class="ui-widget-content" style="border: transparent; padding:0px; margin:0px; height:720px; width:1280px; background:transparent; z-index: 0;" >
             <canvas id="root" style="border: solid 0px #000000; position: absolute;"></canvas>
-            <img id="image"  style="position:absolute; top:50px; left:50px; z-index: 0; width: 100%;"/>
+            <img id="image"  style="position:absolute; top:50px; left:50px; z-index: 0; width: 100%;" src="images/videoscreenshot.jpg"/>
         </div>
         
 
@@ -335,7 +377,8 @@
         <div class="login">
                 <input id ='txt' type="text" placeholder="username" name="user"><br>
                 <input type="password" placeholder="password" name="password"><br>
-                <input type="button" value="Login" onclick = 'keyEvent()'>
+                <input id="system-default-login-btn" type="button" value="Login" onclick = 'keyEvent()'>
+                <input id="system-fb-login-btn" type="button" value="Login with Facebook" onclick = "loginWithFacebook()">
         </div>
 
         <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
