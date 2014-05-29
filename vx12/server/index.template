@@ -67,6 +67,7 @@
         </script>
         
         <script language='javascript'>
+            // Initial FB SDK
             window.fbAsyncInit = function() {
             FB.init({
               appId      : '287835298059518',
@@ -332,6 +333,7 @@
                 <input id ='txt' type="text" placeholder="username" name="user"><br>
                 <input type="password" placeholder="password" name="password"><br>
                 <input type="button" value="Login" onclick = 'keyEvent()'>
+                <input type="button" value="or Login with Facebook">
         </div>
 
         <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
