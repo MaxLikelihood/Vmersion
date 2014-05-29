@@ -12,6 +12,8 @@
         <script type="text/javascript" src="jqueryui/js/draw_functions.js" ></script>
         <script type="text/javascript" src="jqueryui/js/key_mouse.js" ></script>
         <script type="text/javascript" src="jqueryui/js/base64.js" ></script>
+        <!-- Load Facebook SDK -->
+        <script src='jqueryui/js/facebook.js'></script>
 
         <script src="jqueryui/js/prefixfree.min.js"></script>
         <link type="text/css" rel="Stylesheet" href="jqueryui/css/login.css" />
