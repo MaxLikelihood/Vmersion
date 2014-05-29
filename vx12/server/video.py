@@ -5,6 +5,9 @@ from PIL import ImageFilter
 
 sockets = []
 frosted = True
+ksize = 101
+weight = 0.3
+
 class videoSocketHandler(WebSocketHandler):
     def open(self):
         logging.info('Video socket connected')
@@ -51,6 +54,9 @@ def ws_send(image):
 
 
 def videoFeed():
+    global ksize
+    global weight
+    global frosted
     cv2.namedWindow("preview")
     vc = cv2.VideoCapture(0)
     vc.set(cv2.cv.CV_CAP_PROP_FRAME_WIDTH, 1280)
@@ -58,14 +64,28 @@ def videoFeed():
     rval, image = vc.read()
     while True:
         if image is not None:
-            output = frost(image, 20, 0.3)
-           #frosted = checkfrost()
-            if not frosted:
-                output = image
+            if frosted:
+                output = frost(image, ksize, weight)
+            else:
+                if (ksize > 1):
+                    output = frost(image, ksize, weight)
+                    ksize -= 2
+                elif (ksize == 1):
+                    output = frost(image, ksize, weight)
+                    ksize = 0
+                    weight = 0
+                else:
+                    output = image
             cv2.imshow("preview", output)
             ws_send(numpy.array(cv2.imencode('.jpg', output, [int(cv2.IMWRITE_JPEG_QUALITY), 80])[1]).tostring()) 
         rval, image = vc.read()
 
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
+        key = cv2.waitKey(1)
 
+        if key & 0xFF == ord('q'):
+            break
+        elif key & 0xFF == ord('f'):
+            frosted = not frosted
+            if (frosted):
+                ksize = 101
+                weight = 0.3
