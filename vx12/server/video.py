@@ -26,11 +26,13 @@ class videoSocketHandler(WebSocketHandler):
             
 
 
-def frost(image):
-    dst = cv2.GaussianBlur(image, (55,55), 70)
+def frost(image, ksize, weight):
+    if (ksize % 2 == 0):
+        ksize += 1
+    dst = cv2.GaussianBlur(image, (ksize,ksize), 0)
     white = numpy.zeros(image.shape, numpy.uint8)
     white[:] = (255,255,255)
-    return cv2.addWeighted(dst, 1, white, 0.3, 1)
+    return cv2.addWeighted(dst, 1, white, weight, 1)
 
 def ws_send(image):
     # Make sure client is still connected
@@ -47,17 +49,17 @@ def ws_send(image):
 
 def videoFeed():
     cv2.namedWindow("preview")
-    vc = cv2.VideoCapture(1)
+    vc = cv2.VideoCapture(0)
     vc.set(cv2.cv.CV_CAP_PROP_FRAME_WIDTH, 1280)
     vc.set(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT, 720)
     rval, image = vc.read()
     while True:
         if image is not None:
-            output = frost(image)
+            output = frost(image, 20, 0.3)
            #frosted = checkfrost()
             if not frosted:
                 output = image
-            #cv2.imshow("preview", output)
+            cv2.imshow("preview", output)
             ws_send(numpy.array(cv2.imencode('.jpg', output, [int(cv2.IMWRITE_JPEG_QUALITY), 80])[1]).tostring()) 
         rval, image = vc.read()
 
