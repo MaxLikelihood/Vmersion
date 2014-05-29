@@ -42,7 +42,9 @@ function loginWithFacebook()
     if (response.status === 'connected')
     {
       //app authorized and logged into facebook
+      $('#system-default-login-btn').slideUp(1000);
       document.getElementById('system-fb-login-btn').value = 'Connected!';
+      setTimeout(function(){$('.login').fadeOut(2000);}, 2000);
       console.log('connected');
       //keyEvent();
     } 
@@ -53,7 +55,9 @@ function loginWithFacebook()
       FB.login(function(response) {
         if (response.status === 'connected')
         {
+          $('#system-default-login-btn').slideUp(1000);
           document.getElementById('system-fb-login-btn').value = 'Connected!';
+          setTimeout(function(){$('.login').fadeOut(2000);}, 2000);
           console.log('connected');
           //keyEvent();
         }
