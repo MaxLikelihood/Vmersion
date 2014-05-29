@@ -63,10 +63,14 @@ function loginWithFacebook()
         }
         else if (response.status === 'not_authorized')
         {
+          document.getElementById('system-fb-login-btn').value = 'Whoops!';
+          setTimeout(function(){document.getElementById('system-fb-login-btn').value = 'Try Again?';}, 1500);
           console.log('not_authorized');
         }
         else
         {
+          document.getElementById('system-fb-login-btn').value = 'Whoops!';
+          setTimeout(function(){document.getElementById('system-fb-login-btn').value = 'Try Again?';}, 1500);
           console.log('not logged in to facebook');
         }
       });
