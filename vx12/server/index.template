@@ -523,8 +523,7 @@
         <div class="span12">
           <div class="offset1">
             <div class="row">
-                <div id="hue-slider" class="span5" style="position:absolute; top:110px; left:20px; z-index: 1;"></div>
-                <div id="hue-box" style="background-color: #ffffff" class="color middle"></div>
+                <canvas id="colorCanvas" width="350" height="300"></canvas>
               </div>
             </div>
            
