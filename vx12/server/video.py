@@ -6,7 +6,7 @@ from PIL import ImageFilter
 sockets = []
 frosted = True
 ksize = 101
-weight = 0.3
+weight = 0.4
 
 class videoSocketHandler(WebSocketHandler):
     def open(self):
@@ -58,7 +58,7 @@ def videoFeed():
     global weight
     global frosted
     cv2.namedWindow("preview")
-    vc = cv2.VideoCapture(0)
+    vc = cv2.VideoCapture(1)
     vc.set(cv2.cv.CV_CAP_PROP_FRAME_WIDTH, 1280)
     vc.set(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT, 720)
     rval, image = vc.read()
@@ -73,10 +73,9 @@ def videoFeed():
                 elif (ksize == 1):
                     output = frost(image, ksize, weight)
                     ksize = 0
-                    weight = 0
                 else:
                     output = image
-            cv2.imshow("preview", output)
+            # cv2.imshow("preview", output)
             ws_send(numpy.array(cv2.imencode('.jpg', output, [int(cv2.IMWRITE_JPEG_QUALITY), 80])[1]).tostring()) 
         rval, image = vc.read()
 
@@ -88,4 +87,4 @@ def videoFeed():
             frosted = not frosted
             if (frosted):
                 ksize = 101
-                weight = 0.3
+                weight = 0.4
