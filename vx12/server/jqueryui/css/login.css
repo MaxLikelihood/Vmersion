@@ -139,9 +139,22 @@ body{
    color: rgba(255,255,255,0.6);
 }
 
-#welcome {
-	opacity: 0;
-	transition-duration: 2s;
+#welcome-message {
+	position: absolute; 
+    top: 40%;
+	left: 30%; 
+    height: 100px; 
+    width: 800px; 
+}
+
+#welcome-text{
+	height: inherit; 
+    width: inherit; 
+	color: white; 
+    cursor:pointer; 
+    opacity: 0.6; 
+    font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 70px; 
 }
 
 #system-fb-login-btn {

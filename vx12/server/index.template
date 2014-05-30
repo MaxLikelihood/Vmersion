@@ -63,6 +63,7 @@
             var ws_video = new WebSocket("ws://localhost:7070/video");
             $(document).ready(function() {
                 $('.login').hide().fadeIn(3000);
+                $('#welcome-message').hide();
                 var image = document.getElementById('image');
                 ws_video.onmessage = function (e) {
                     image.src = window.URL.createObjectURL(e.data);
@@ -368,6 +369,9 @@
             <img id="image"  style="position:absolute; top:50px; left:50px; z-index: 0; width: 100%;" src="images/videoscreenshot.jpg"/>
         </div>
         
+        <!-- Welcome Message -->
+
+        <div id = 'welcome-message'><p id="welcome-text">Welcome, </p></div>
 
         <!-- Login portion starts -->
         <div class="body"></div>
@@ -375,7 +379,7 @@
         </div>
         <br>
         <div class="login">
-                <input id ='txt' type="text" placeholder="username" name="user"><br>
+                <input id ='system-login-username' type="text" placeholder="username" name="user"><br>
                 <input type="password" placeholder="password" name="password"><br>
                 <input id="system-default-login-btn" type="button" value="Login" onclick = 'keyEvent()'>
                 <input id="system-fb-login-btn" type="button" value="Login with Facebook" onclick = "loginWithFacebook()">
