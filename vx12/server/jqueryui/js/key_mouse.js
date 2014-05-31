@@ -39,7 +39,6 @@ function loadInterface() {
 
 function keyEvent() {
       unblur();
-      var textval = document.getElementById('txt').value;
     	ws_server[0] = "ws://localhost:7070/1_Handler";
       ws_server[1] = "ws://localhost:7070/2_Handler";
 			//document.getElementById("app").href="1/custom.css";
@@ -51,11 +50,11 @@ function keyEvent() {
     	// }	
       
       implement();
-      loadCanvas(textval);
+      loadCanvas();
       removeDiv();
 };
 
-function createDiv(textval)
+function createDiv()
 {
   mainDiv = document.getElementsByClassName("ui-widget-content")[0];
   var div = document.createElement("div");
@@ -67,10 +66,19 @@ function createDiv(textval)
   div.style.top = '10px';
  // div.style.position = 'absolute';
   div.style.left = '10px';
-//  div.innerHTML = 'Welcome ' + textval +'style = \'position\';
-  div.innerHTML = "<div style='position: absolute; color: white; cursor:pointer; opacity: 0.3; font-style: Sans-Serif; font-size: xx-large; left: 400px; top: 100px; height: 100px; width: 100px; padding: 1em;' id = \'welcome\'>Welcome <br>" + textval +"!</div>";
- // var welcome = document.getElementById('welcome');
-  setTimeout(function(){document.getElementById('welcome').remove();}, 3000);
+  
+  if (facebook_login) 
+  {
+    FB.api('/me', function(response) {
+      $('#welcome-text').text('Welcome, ' + JSON.parse(JSON.stringify(response)).first_name + '.');
+    });    
+  }
+  else
+  {
+    $('#welcome-text').text('Welcome, ' + document.getElementById('system-login-username').value + '.');
+  }
+  $('#welcome-message').fadeIn(2000);
+  setTimeout(function(){$('#welcome-message').fadeOut(1500);}, 3500);
   mainDiv.appendChild(div);
 }
 
