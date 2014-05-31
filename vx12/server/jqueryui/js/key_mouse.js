@@ -77,9 +77,9 @@ function createDiv(textval)
 function loadCanvas(textval) {
    createDiv(textval);
     /*** Calling the Three.js functions for adding effects to the canvas ***/    
-   init();
-	 animate();
- //  color();
+  //  init();
+	// animate();
+ 
 }
       
 
@@ -148,7 +148,7 @@ function init()
 
 
   this.engine = new ParticleEngine();
- // engine.setValues( Examples.startunnel );
+  engine.setValues( Examples.startunnel );
   engine.initialize();
 
  
@@ -241,103 +241,188 @@ function render()
     *Javascript effects for Color Pallete on the video browser 
     *********************************************************/
 
-    function hexToR(h) {return parseInt((cutHex(h)).substring(0,2),16)}
-    function hexToG(h) {return parseInt((cutHex(h)).substring(2,4),16)}
-    function hexToB(h) {return parseInt((cutHex(h)).substring(4,6),16)}
-    function cutHex(h) {return (h.charAt(0)=="#") ? h.substring(1,7):h}
+  //   function hexToR(h) {return parseInt((cutHex(h)).substring(0,2),16)}
+  //   function hexToG(h) {return parseInt((cutHex(h)).substring(2,4),16)}
+  //   function hexToB(h) {return parseInt((cutHex(h)).substring(4,6),16)}
+  //   function cutHex(h) {return (h.charAt(0)=="#") ? h.substring(1,7):h}
 
 
-    var scheme = null;
-  // $(document).ready(function(){
-      function color(ws){
-      $("#hue-slider").slider({
-        min: 0,
-        max: 360,
-        slide: function(e, ui) {
-          // ui.value has the number
-          setHue(ui.value, ws);
-          console.log("Slider changed and ws: " + ws);
-        }
-      });
+  //   var scheme = null;
+  // // $(document).ready(function(){
+  //     function color(ws){
+  //     $("#hue-slider").slider({
+  //       min: 0,
+  //       max: 360,
+  //       slide: function(e, ui) {
+  //         // ui.value has the number
+  //         setHue(ui.value, ws);
+  //         console.log("Slider changed and ws: " + ws);
+  //       }
+  //     });
       
-      $('#hex').change(function(){
-        setHex( $('#hex').val() );
+  //     $('#hex').change(function(){
+  //       setHex( $('#hex').val() );
 
-      });
+  //     });
 
 
       
-      $('#set-hex').click(function(){
-        setHex( $('#hex').val() );
-      });
+  //     $('#set-hex').click(function(){
+  //       setHex( $('#hex').val() );
+  //     });
       
       
-      scheme = new ColorScheme;
-      setHue(0, ws);
-      generateColors();
+  //     scheme = new ColorScheme;
+  //     setHue(0, ws);
+  //     generateColors();
       
-      // $('#add-complement').click(addComplement);
-    }//);
+  //     // $('#add-complement').click(addComplement);
+  //   }//);
     
-    function generateColors() {
-      $('#colors').html('');
-      var colors = scheme.colors();
-      for (var i in colors) {
-        var c = colors[i];
-        var newDiv = '<div class="color" style="background-color: #' + c + '"></div>';
-        $('#colors').append(newDiv);
-      }
-    }
+  //   function generateColors() {
+  //     $('#colors').html('');
+  //     var colors = scheme.colors();
+  //     for (var i in colors) {
+  //       var c = colors[i];
+  //       var newDiv = '<div class="color" style="background-color: #' + c + '"></div>';
+  //       $('#colors').append(newDiv);
+  //     }
+  //   }
     
-    function setHue(hue, ws) {
-      scheme.from_hue(hue);
+  //   function setHue(hue, ws) {
+  //     scheme.from_hue(hue);
       
-      var bg = scheme.colors()[0];
-      $('#hue-box').css('background-color', '#' + bg);
+  //     var bg = scheme.colors()[0];
+  //     $('#hue-box').css('background-color', '#' + bg);
       
-      $('#hex').val( bg );
-      $('#red').val( hexToR(bg) );
-      $('#green').val( hexToG(bg) );
-      $('#blue').val( hexToB(bg) );
-      //console.warn("setHue Invoked");
-      //ws.send("test msg\n");
-      ws.send('ledColor' + ','+ hexToR(bg) + ',' + hexToG(bg) + ',' + hexToB(bg) + '\n');
-      // restartEngine( Examples.fountain(bg) );
-      $('#hex-box').css('background-color', '#' + bg);
+  //     $('#hex').val( bg );
+  //     $('#red').val( hexToR(bg) );
+  //     $('#green').val( hexToG(bg) );
+  //     $('#blue').val( hexToB(bg) );
+  //     //console.warn("setHue Invoked");
+  //     //ws.send("test msg\n");
+  //     ws.send('ledColor' + ','+ hexToR(bg) + ',' + hexToG(bg) + ',' + hexToB(bg) + '\n');
+  //     // restartEngine( Examples.fountain(bg) );
+  //     $('#hex-box').css('background-color', '#' + bg);
       
-      generateColors();
-    }
+  //     generateColors();
+  //   }
     
-    function setHex(hex) {
-      // Strip possible leading hash
-      hex = hex.replace('#', '');
+  //   function setHex(hex) {
+  //     // Strip possible leading hash
+  //     hex = hex.replace('#', '');
       
-      console.log(hex);
-      scheme.from_hex(hex);
+  //     console.log(hex);
+  //     scheme.from_hex(hex);
       
-      var bg = scheme.colors()[0];
-      $('#hue-box').css('background-color', '#' + bg);
-      $('#hex-box').css('background-color', '#' + hex);
+  //     var bg = scheme.colors()[0];
+  //     $('#hue-box').css('background-color', '#' + bg);
+  //     $('#hex-box').css('background-color', '#' + hex);
       
-      generateColors();
-    }
+  //     generateColors();
+  //   }
     
     
     
-    function setWebSafe(websafe) {
-      scheme.web_safe(websafe);
-      generateColors();
-    }
+  //   function setWebSafe(websafe) {
+  //     scheme.web_safe(websafe);
+  //     generateColors();
+  //   }
     
-    function randomHue() {
-      var h = Math.round(Math.random() * 360);
-      scheme.from_hue(h);
-      generateColors();
-    }
+  //   function randomHue() {
+  //     var h = Math.round(Math.random() * 360);
+  //     scheme.from_hue(h);
+  //     generateColors();
+  //   }
 
     /****************Color Pallete ends *********************/
 
+
+   /***********Robert's Color Pallet code********************/
+
+   function sendColor(ws, red, green, blue) {
+      console.log("Web socket in sendColor " +ws);
+      ws.send('ledColor' + ','+ red + ',' + green + ',' + blue + '\n');
+    }
+
+    function getMousePos(colorCanvas, evt) {
+        var rect = colorCanvas.getBoundingClientRect();
+        return {
+          x: evt.clientX - rect.left,
+          y: evt.clientY - rect.top
+        };
+      }
+
+      // function drawColorSquare(colorCanvas, color, colorImageObj) {
+      //   var colorSquareSize = 100;
+      //   var padding = 10;
+      //   var colorContext = colorCanvas.getContext('2d');
+      //   var squareX = (colorCanvas.width - colorSquareSize + colorImageObj.width) / 2;
+      //   var squareY = (colorCanvas.height - colorSquareSize) / 2;
+
+      //   colorContext.beginPath();
+      //   colorContext.fillStyle = color;
+      //   colorContext.fillRect(squareX, squareY, colorSquareSize, colorSquareSize);
+      //   colorContext.strokeRect(squareX, squareY, colorSquareSize, colorSquareSize);
+      // }
+
+      function selectColor(mouseDown, evt, ws){
+         var color_canvas = document.getElementById('colorCanvas');
+         var mousePos = getMousePos(color_canvas, evt);
+          var color = undefined;
+
+          if(mouseDown && mousePos !== null && mousePos.x <  color_canvas.width 
+            && mousePos.y < color_canvas.height) {
+            var imageData = color_canvas.getContext('2d').getImageData(0, 0, color_canvas.width, color_canvas.width);
+            var data = imageData.data;
+            var x = mousePos.x;
+            var y = mousePos.y;
+            var pixel = ((color_canvas.width * y) + x) * 4
+            var alpha = data[pixel + 3];
+            
+            if (alpha > 0) {
+              console.log('alpha called');
+              var red = data[pixel];
+              var green = data[pixel+ 1];
+              var blue = data[pixel + 2];
+              var color = 'rgb(' + red + ',' + green + ',' + blue + ')';
+              // drawColorSquare(color_canvas, color, colorImageObj);
+              sendColor(ws, red, green, blue);
+           }
+            
+          }
+      }
+      
+      function colorPickerInit(colorImageObj, ws){
+        var padding = 0;
+        var color_canvas = document.getElementById('colorCanvas');
+        var colorContext = color_canvas.getContext('2d');
+        var mouseDown = false;
+        console.log("Web socket in Colorpickerinit " +ws);
+        colorContext.strokeStyle = '#444';
+        colorContext.lineWidth = 2;
+
+        color_canvas.addEventListener('mousedown', function(ev) {
+          mouseDown = true;
+          selectColor(mouseDown, ev, ws);
+        }, false);
+
+        color_canvas.addEventListener('mouseup', function() {
+          mouseDown = false;
+        }, false);
+
+        color_canvas.addEventListener('mousemove', function(evt) {
+          selectColor(mouseDown, evt, ws);
+         
+        }, false);
+
+
+        // colorContext.drawImage(colorImageObj, padding, padding);
+        // drawColorSquare(color_canvas, 'white', colorImageObj);
+      }
+
   
+   /***************Robert's code ends************************/
 
 
 
@@ -438,31 +523,40 @@ function implement(){
     ws[0]onopen() function starts, most ws.send manipulations and functions are here
     *****************************************************************************************/
 
+    ws[1].onopen = function(evt){
+
+    
+
+
+    }
+
+    
+
+
+
     ws[0].onopen = function(evt) {
         var str = "EVENT SETUP " + document.width + " " + document.height + "\n";
         ws[0].send(str);
-        
-    /*****************Lamp1*******************************/
 
-    /***Extracting the most dominant color in the background using Color Thief*****/
-    // var col = document.getElementById('col');
-    // var colorThief = new ColorThief();
-    // var dominantCol = colorThief.getColor(col);
-    // console.log("Dominant color r,g,b values " + dominantCol);
+      
+      //  var colorImageObj = new Image();
+      //       colorImageObj.src = 'images/color-picker.png';
+      //       colorImageObj.onload = function() {
+      //       var width = colorImageObj.width;
+      //       var height = colorImageObj.height;
+      //       var context = document.getElementById('colorCanvas').getContext("2d");
+      //       context.drawImage(colorImageObj, 0, 0, 113, 132);
 
+      //       /*******Perspective****************/
 
-    var outLamp1 = document.getElementById('outerLamp1');
-    var menuLamp1 = document.getElementById('menuLamp1');
-    var lamp1 = document.getElementById('Lamp1');
-    lamp1.onmouseover = function(){
-      menuLamp1.style.display = "block"; menuLamp1.style.position = "absolute"; menuLamp1.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuLamp1.style.height= '300px'; menuLamp1.style.width= '150px'; menuLamp1.style.top= '39%'; menuLamp1.style.left= '15%'; menuLamp1.style.zIndex= '2'; menuLamp1.style.cursor= 'pointer';
-      lampMenu(ws[1]);
-    }
-    
-    outLamp1.onmouseout = function(){
-      menuLamp1.style.display  = 'none';
-    }
-    
+      //   //      for (var i = 0; i <= height / 2; ++i) {
+      //   // //         context.setTransform(1, -0.4 * i / height, 0, 1, 0, 60);
+      //   //           context.drawImage(colorImageObj, 0, height / 2 - i, width, 2, 0, height / 2 - i, width, 2);
+      //   // //         context.setTransform(1, 0.4 * i / height, 0, 1, 0, 60);
+      //   //          context.drawImage(colorImageObj, 0, height / 2 + i, width, 2, 0, height / 2 + i, width, 2);
+      //   //  }
+      //   colorPickerInit(colorImageObj, ws[1]);
+      // };
 
       /*************The base*****************/
 
@@ -476,6 +570,33 @@ function implement(){
       outB.onmouseout = function(){
       menuB.style.display  = 'none';
       }
+
+            /*************Code for color pallet web socket connection**************/  
+
+        
+   
+      /*****************Lamp1*******************************/
+
+    /***Extracting the most dominant color in the background using Color Thief*****/
+    // var col = document.getElementById('col');
+    // var colorThief = new ColorThief();
+    // var dominantCol = colorThief.getColor(col);
+    // console.log("Dominant color r,g,b values " + dominantCol);
+
+
+      var outLamp1 = document.getElementById('outerLamp1');
+      var menuLamp1 = document.getElementById('menuLamp1');
+      var lamp1 = document.getElementById('Lamp1');
+      lamp1.onmouseover = function(){
+      menuLamp1.style.display = "block"; menuLamp1.style.position = "absolute"; menuLamp1.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuLamp1.style.height= '300px'; menuLamp1.style.width= '150px'; menuLamp1.style.top= '39%'; menuLamp1.style.left= '15%'; menuLamp1.style.zIndex= '2'; menuLamp1.style.cursor= 'pointer';
+      lampMenu(ws[1]);
+      
+     }
+    
+     outLamp1.onmouseout = function(){
+       menuLamp1.style.display  = 'none';
+     }
+
 
 
       /***************The body******************/

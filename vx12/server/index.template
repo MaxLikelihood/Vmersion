@@ -64,8 +64,14 @@
             $(document).ready(function() {
                 $('.login').hide().fadeIn(3000);
                 var image = document.getElementById('image');
+                var imagesrc =  "";
                 ws_video.onmessage = function (e) {
-                    image.src = window.URL.createObjectURL(e.data);
+                 if(imagesrc != "")
+                    window.URL.revokeObjectURL(imagesrc);
+
+                  image.src = window.URL.createObjectURL(e.data);
+                  imagesrc = image.src;
+
                 };
             });
 
@@ -377,7 +383,7 @@
         <div class="login">
                 <input id ='txt' type="text" placeholder="username" name="user"><br>
                 <input type="password" placeholder="password" name="password"><br>
-                <input id="system-default-login-btn" type="button" value="Login" onclick = 'keyEvent()'>
+                <input id="system-default-login-btn" type="button" value="Login" onclick = 'loadInterface()'>
                 <input id="system-fb-login-btn" type="button" value="Login with Facebook" onclick = "loginWithFacebook()">
         </div>
 
@@ -388,8 +394,8 @@
 
         <!-- Slanted div with information -->
 
-        <section id="blue" class="container">
-            <div class="box"> Vmersion smart devices<br>
+        <!-- <section id="blue" class="container"> -->
+            <div class = "dropdown-menu" aria-labelledby = "dropdownMenu"> <br>
             <div id = 'mainMenu'>
                 <i class="fa fa-lightbulb-o fa-2x" ></i> Lamp1<br> <br>
             </div>
@@ -397,7 +403,7 @@
             <i id = 'light1' class="fa fa-lightbulb-o fa-2x"></i>  Lamp2<br> <br>
             
             </div>
-        </section>
+        <!-- </section> -->
 
         <!--  Robot Arm starts-->
         
@@ -413,11 +419,11 @@
             </div> 
             
             <div id = 'bwBase' > 
-                <i class="fa fa-arrow-left fa-2x" ></i> <br>  
+                <i class="fa fa-long-arrow-left fa-2x" ></i> <br>  
             </div>
             
             <div id = 'fwBase' > 
-                <i class="fa fa-arrow-right fa-2x"></i>
+                <i class="fa fa-long-arrow-right fa-2x"></i>
              </div> 
             
         </div>
@@ -434,11 +440,11 @@
             </div> 
             
             <div id = 'bwBody'> 
-                <i class="fa fa-arrow-left fa-2x" ></i> <br> 
+                <i class="fa fa-long-arrow-left fa-2x" ></i> <br> 
             </div>
             
             <div id = 'fwBody' > 
-                <i class="fa fa-arrow-right fa-2x"></i>
+                <i class="fa fa-long-arrow-right fa-2x"></i>
              </div> 
             
         </div>
@@ -460,11 +466,11 @@
             </div> 
             
             <div id = 'bwHead'  style = "float:left;"> 
-                <i class="fa fa-arrow-left fa-2x" ></i> &nbsp; &nbsp; 
+                <i class="fa fa-long-arrow-left fa-2x" ></i> &nbsp; &nbsp; 
             </div>
             
             <div id = 'fwHead' > 
-                <i class="fa fa-arrow-right fa-2x"></i>
+                <i class="fa fa-long-arrow-right fa-2x"></i>
              </div> 
             
         </div>
@@ -482,11 +488,11 @@
             </div> 
             
             <div id = 'bwHand' > 
-                <i class="fa fa-arrow-left fa-2x" ></i> <br>
+                <i class="fa fa-long-arrow-left fa-2x" ></i> <br>
             </div>
             
             <div id = 'fwHand' > 
-                <i class="fa fa-arrow-right fa-2x"></i>
+                <i class="fa fa-long-arrow-right fa-2x"></i>
              </div> 
             
         </div>
@@ -501,7 +507,7 @@
 
         <div id ='Lamp1'></div>
 
-        <div id = 'menuLamp1'>  <br>
+        <div id = 'menuLamp1' class = "dropdown-menu" aria-labelledby = "dropdownMenu">  <br>
             <div id = 'switch'>
                 <i class="fa fa-stop fa-2x" ></i> On/Off<br> <br>
             </div>
@@ -518,18 +524,24 @@
 
        <!-- Color Pallete portion starts -->            
 
-        <div class="container2">
+        <!-- <div class="container2">
         <div class="row">
         <div class="span12">
-          <div class="offset1">
-            <div class="row">
-                <div id="hue-slider" class="span5" style="position:absolute; top:110px; left:20px; z-index: 1;"></div>
-                <div id="hue-box" style="background-color: #ffffff" class="color middle"></div>
-              </div>
+          <div class="offset1"> -->
+            <!--div class="row" style = "position: absolute; top: 36%; left: 11%;"-->
+            <i class = "fa fa-tablet" style = "color: white; font-size: 17em; position: absolute; top: 300px; left: 60px; z-index:5; opacity: 0.3;" >
+            </i>
+            <div id = "colorDiv" style = "position: absolute; top: 333px; left: 80px; z-index:5; background:transparent;" >
+                
+                <canvas id="colorCanvas" style = 'opacity: 0.2;' ></canvas>
+                
             </div>
+            <!-- </div>  -->
+              <!-- </div>
+            </div> -->
            
  
-            </div>
+            <!--/div-->
             <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
             <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>
             <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>

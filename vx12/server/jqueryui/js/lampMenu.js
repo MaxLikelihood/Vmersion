@@ -34,9 +34,30 @@ function lampMenu(ws)
     pallet.onmousedown = function(){
           if(pallet.style.color == 'black')
           {
-            color(ws);
+
+            //color(ws);
             pallet.style.zIndex = 1;
             pallet.style.color = 'blue';
+            
+            var colorImageObj = new Image();
+            colorImageObj.src = 'images/color-picker.png';
+            colorImageObj.onload = function() {
+            var width = colorImageObj.width;
+            var height = colorImageObj.height;
+            var context = document.getElementById('colorCanvas').getContext("2d");
+            context.drawImage(colorImageObj, 0, 0, 113, 132);
+
+                   /*******Perspective****************/
+        
+               //      for (var i = 0; i <= height / 2; ++i) {
+                // //         context.setTransform(1, -0.4 * i / height, 0, 1, 0, 60);
+               //           context.drawImage(colorImageObj, 0, height / 2 - i, width, 2, 0, height / 2 - i, width, 2);
+                // //         context.setTransform(1, 0.4 * i / height, 0, 1, 0, 60);
+               //          context.drawImage(colorImageObj, 0, height / 2 + i, width, 2, 0, height / 2 + i, width, 2);
+                //  }
+             colorPickerInit(colorImageObj, ws);
+            };
+
           }
           else 
           {
