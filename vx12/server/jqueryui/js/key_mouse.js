@@ -82,8 +82,8 @@ function createDiv()
   mainDiv.appendChild(div);
 }
 
-function loadCanvas(textval) {
-   createDiv(textval);
+function loadCanvas() {
+   createDiv();
     /*** Calling the Three.js functions for adding effects to the canvas ***/    
   //  init();
 	// animate();
