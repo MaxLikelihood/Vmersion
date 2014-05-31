@@ -30,11 +30,21 @@ var _screenLayer = false;
 var keyCount = new Array();
 var count=0;
 var ws = new Array();
+var verified = true;
 
 // custom global variables
 
 function loadInterface() {
-  setTimeout(function(){keyEvent();}, 5000);
+  if (verified)
+  {
+    $('#system-fb-login-btn').slideUp(1000);
+    document.getElementById('system-default-login-btn').value = 'Verified';
+    setTimeout(function(){$('.login').fadeOut(2000);}, 2000);
+    setTimeout(function(){keyEvent();}, 5000);    
+  } else {
+    document.getElementById('system-default-login-btn').value = 'Incorrect Info';
+    setTimeout(function(){document.getElementById('system-default-login-btn').value = 'Try Again';}, 1500);
+  }
 }
 
 function keyEvent() {

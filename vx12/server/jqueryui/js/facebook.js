@@ -45,7 +45,7 @@ function loginWithFacebook()
     {
       //app authorized and logged into facebook
       $('#system-default-login-btn').slideUp(1000);
-      document.getElementById('system-fb-login-btn').value = 'Connected!';
+      document.getElementById('system-fb-login-btn').value = 'Connected';
       setTimeout(function(){$('.login').fadeOut(2000);}, 2000);
       console.log('connected');
       facebook_login = true;
@@ -59,7 +59,7 @@ function loginWithFacebook()
         if (response.status === 'connected')
         {
           $('#system-default-login-btn').slideUp(1000);
-          document.getElementById('system-fb-login-btn').value = 'Connected!';
+          document.getElementById('system-fb-login-btn').value = 'Connected';
           setTimeout(function(){$('.login').fadeOut(2000);}, 2000);
           console.log('connected');
           facebook_login = true;
@@ -67,14 +67,14 @@ function loginWithFacebook()
         }
         else if (response.status === 'not_authorized')
         {
-          document.getElementById('system-fb-login-btn').value = 'Whoops!';
-          setTimeout(function(){document.getElementById('system-fb-login-btn').value = 'Try Again?';}, 1500);
+          document.getElementById('system-fb-login-btn').value = 'Unsuccessful';
+          setTimeout(function(){document.getElementById('system-fb-login-btn').value = 'Connect Again';}, 1500);
           console.log('not_authorized');
         }
         else
         {
-          document.getElementById('system-fb-login-btn').value = 'Whoops!';
-          setTimeout(function(){document.getElementById('system-fb-login-btn').value = 'Try Again?';}, 1500);
+          document.getElementById('system-fb-login-btn').value = 'Unsuccessful';
+          setTimeout(function(){document.getElementById('system-fb-login-btn').value = 'Connect Again';}, 1500);
           console.log('not logged in to facebook');
         }
       });
