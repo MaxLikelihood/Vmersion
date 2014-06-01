@@ -66,6 +66,8 @@ class VxController:
 		app['address'] = address
 		app['appHandler'] = appHandler
 		
+		# Set application name to unknown default
+		app['appName'] = 'unknown_app_' + appid
 		
 		# Add WebSocket handler	
 		app['wsHandler'] = None
