@@ -1,0 +1,266 @@
+
+/************CSS starts here********************************/   
+
+body {margin: 4px;
+    }
+
+@font-face
+{
+    font-family: myFirstFont;
+    src: url(SansationLight.woff);
+}
+
+
+/*****The slanted div with all info *************/
+
+.container {
+  width: 200px;
+  height: 200px;
+  top: 15%;
+  left: 50%;
+  /*border: 1px solid #CCC;*/
+  margin: 0 auto 40px;
+  position: absolute;
+  z-index: 2;
+
+}
+
+
+.box {
+  width: 250px;
+  height: 200px;
+}
+
+
+#blue {
+  -webkit-perspective: 600px;
+     -moz-perspective: 600px;
+       -o-perspective: 600px;
+          perspective: 600px;
+}
+
+#blue .box {
+
+  z-index: 2;
+  background-color: rgba(240, 177, 82, 0.2);
+  -webkit-transform: rotateY( -25deg );
+     -moz-transform: rotateY( -25deg );
+       -o-transform: rotateY( -25deg );
+          transform: rotateY( -25deg );
+}
+
+
+/***********CSS for lamp1*******************/
+
+#menuLamp1{
+    display: none;
+}
+
+#Lamp1{
+    position: absolute;
+    height: 200px;
+    width: 250px;
+    top: 38%;
+    left: 13%;
+    z-index: 1;
+    cursor: pointer;
+    background-color: blue;
+    opacity: 0.1;
+}
+
+#outerLamp1{
+    position: absolute;
+    height: 320px;
+    width: 375px;
+    top: 34%;
+    left: 11%;
+    z-index: 1;
+    cursor: pointer;
+    background-color: green;
+    opacity: 0.1;
+}
+
+
+/***********CSS for the robotic arm*************/
+
+
+/********Base*************/
+
+#menuBase{
+    display: none;
+}
+
+
+#Base{
+    position: absolute;
+    height: 140px;
+    width: 190px;
+    top: 70%;
+    left: 37%;
+    z-index: 1;
+    cursor: pointer;
+    background-color: yellow;
+    opacity: 0.1;
+}
+
+#outerBase{
+    position: absolute;
+    height: 180px;
+    width: 230px;
+    top: 68%;
+    left: 36%;
+    z-index: 1;
+    cursor: pointer;
+    background-color: white;
+    opacity: 0.1;
+}
+
+
+
+/*********Body*****************/
+
+#menuBody{
+    display: none;
+}
+
+
+#Body{
+    position: absolute;
+    height: 140px;
+    width: 190px;
+    top: 72%;
+    left: 60%;
+    z-index: 1;
+    cursor: pointer;
+    background-color: red;
+    opacity: 0.1;
+}
+
+#outerBody{
+    position: absolute;
+    height: 180px;
+    width: 230px;
+    top: 70%;
+    left: 59%;
+    z-index: 1;
+    cursor: pointer;
+    background-color: blue;
+    opacity: 0.1;
+}
+
+
+
+/***********Head**************************/
+
+#menuHead{
+    display: none;
+}
+
+
+#lampHead{
+    position: absolute;
+    height: 175px;
+    width: 125px;
+    top: 38%;
+    left: 48%;
+    z-index: 1;
+    cursor: pointer;
+    background-color: green;
+    opacity: 0.1;
+}
+
+#outerHead{
+    position: absolute;
+    height: 225px;
+    width: 175px;
+    top: 36%;
+    left: 46%;
+    z-index: 1;
+    background-color: blue;
+    opacity: 0.1;
+    cursor: pointer;
+}
+
+
+
+/***********Hand******************/
+
+ #menuHand{
+    display: none;
+}
+
+
+#Hand{
+    position: absolute;
+     height: 175px;
+    width: 125px;
+    top: 34%;
+    left: 66%;
+    z-index: 1;
+    cursor: pointer;
+    background-color: purple;
+    opacity: 0.1;
+}
+
+#outerHand{
+    position: absolute;
+    height: 225px;
+    width: 175px;
+    top: 32%;
+    left: 64%;
+    z-index: 1;
+    cursor: pointer;
+    background-color: maroon;
+    opacity: 0.1;
+}
+
+/******Robotic Arm css ends*******************/
+
+.color {
+height: 50px;
+width: 50px;
+float: left;
+margin: 5px;
+border: 1px solid #ccc;
+}
+#hue-box {
+    margin-left: 20px;
+    margin-top: 19px;
+}   
+.bordered {
+    border-top: 1px solid #ccc;
+}
+
+#hex-box {
+    background-color: #fff;
+    position: relative;
+    top: -15px;
+    left: -60px;
+}
+
+
+#mainMenu{
+    font-family:"Times New Roman";
+}
+
+/*********************The Z-indx and scale animatino**************************************/
+
+@keyframes move {
+   from { z-index: 0; transform: scale(0.1); }
+  to { z-index: 4; transform: scale(1); }
+}
+
+@-webkit-keyframes move {
+  from { z-index: 0; -webkit-transform: scale(0.1);  }
+  to { z-index: 4; -webkit-transform: scale(1);  }
+}
+
+@keyframes moveout {
+  from { z-index: 4; transform: scale(1);  }
+  to { z-index: 0; transform: scale(0.1);  }
+}
+
+@-webkit-keyframes moveout {
+  from { z-index: 4; -webkit-transform: scale(1);  }
+  to { z-index: 0; -webkit-transform: scale(0.1);  }
+}
