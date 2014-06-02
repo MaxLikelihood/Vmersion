@@ -69,7 +69,7 @@ def videoFeed():
             else:
                 if (ksize > 1):
                     output = frost(image, ksize, weight)
-                    ksize -= 2
+                    ksize -= 10
                 elif (ksize == 1):
                     output = frost(image, ksize, weight)
                     ksize = 0
