@@ -49,9 +49,30 @@ function loadInterface() {
 
 function keyEvent() {
       unblur();
-      setTimeout(function(){console.log(getAppHandler('test_client'));}, 5000);
-    	ws_server[0] = "ws://localhost:7070/1_Handler";
-      ws_server[1] = "ws://localhost:7070/2_Handler";
+    	if (getAppHandler('robot_1') != null)
+      {
+        ws_server[0] = "ws://localhost:7070" + getAppHandler('robot_1');
+      }
+      else
+      {
+        ws_server[0] = "ws://localhost:7070/1_Handler";
+      }
+      if (getAppHandler('lamp_1') != null)
+      {
+        ws_server[1] = "ws://localhost:7070" + getAppHandler('lamp_1');
+      }
+      else
+      {
+        ws_server[1] = "ws://localhost:7070/2_Handler";
+      }
+      if (getAppHandler('lamp_2') != null)
+      {
+        ws_server[2] = "ws://localhost:7070" + getAppHandler('lamp_2');
+      }
+      else
+      {
+        ws_server[2] = "ws://localhost:7070/3_Handler";
+      }
       
 			//document.getElementById("app").href="1/custom.css";
     	// }
