@@ -58,7 +58,7 @@ def videoFeed():
     global weight
     global frosted
     cv2.namedWindow("preview")
-    vc = cv2.VideoCapture(0)
+    vc = cv2.VideoCapture(2)
     vc.set(cv2.cv.CV_CAP_PROP_FRAME_WIDTH, 1280)
     vc.set(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT, 720)
     rval, image = vc.read()

@@ -1,7 +1,7 @@
-function lampMenu(ws)
+function lamp2Menu(ws)
 {
-  console.log("lampMenu called");
-	var stop = document.getElementById('switch');
+  console.log("lamp2Menu called");
+	var stop = document.getElementById('switch2');
 	stop.style.color = 'black';
     stop.onmouseover = function(){
       //cam1.style.backgroundColor = 'blue';
@@ -27,14 +27,14 @@ function lampMenu(ws)
     }
 
 
-    var pallet = document.getElementById('pallet1');
+    var pallet = document.getElementById('pallet2');
     pallet.style.color = 'black';
     pallet.onmouseover = function(){
       pallet.style.opacity = 0.5;
-    }
-    pallet.onmousedown = function(){
-          var canvas = document.getElementById('colorCanvas');
-          var tablet = document.getElementById("tablet");
+    };
+        pallet.onmousedown = function(){
+          var canvas = document.getElementById('colorCanvas2');
+          var tablet = document.getElementById("tablet2");
           if(pallet.style.color == 'black')
           {
 
@@ -60,7 +60,7 @@ function lampMenu(ws)
                 // //         context.setTransform(1, 0.4 * i / height, 0, 1, 0, 60);
                //          context.drawImage(colorImageObj, 0, height / 2 + i, width, 2, 0, height / 2 + i, width, 2);
                 //  }
-             colorPickerInit(colorImageObj, 'colorCanvas', ws);
+             colorPickerInit(colorImageObj, 'colorCanvas2', ws);
             };
 
           }
@@ -75,7 +75,7 @@ function lampMenu(ws)
       }
     pallet.onmouseout = function(){
       pallet.style.opacity = 1;
-    }
+    };
 
 
 

@@ -60,7 +60,7 @@ body {margin: 4px;
     position: absolute;
     height: 200px;
     width: 250px;
-    top: 38%;
+    top: 45%;
     left: 13%;
     z-index: 1;
     cursor: pointer;
@@ -72,13 +72,47 @@ body {margin: 4px;
     position: absolute;
     height: 320px;
     width: 375px;
-    top: 34%;
+    top: 41%;
     left: 11%;
     z-index: 1;
     cursor: pointer;
     background-color: green;
     opacity: 0.1;
 }
+
+
+
+
+/***********CSS for lamp2*******************/
+
+#menuLamp2{
+    display: none;
+}
+
+#Lamp2{
+    position: absolute;
+    height: 200px;
+    width: 250px;
+    top: 38%;
+    left: 38%;
+    z-index: 1;
+    cursor: pointer;
+    background-color: blue;
+    opacity: 0.1;
+}
+
+#outerLamp2{
+    position: absolute;
+    height: 320px;
+    width: 375px;
+    top: 34%;
+    left: 35%;
+    z-index: 1;
+    cursor: pointer;
+    background-color: green;
+    opacity: 0.1;
+}
+
 
 
 /***********CSS for the robotic arm*************/
@@ -95,7 +129,7 @@ body {margin: 4px;
     position: absolute;
     height: 140px;
     width: 190px;
-    top: 70%;
+    top: 92%;
     left: 37%;
     z-index: 1;
     cursor: pointer;
@@ -107,7 +141,7 @@ body {margin: 4px;
     position: absolute;
     height: 180px;
     width: 230px;
-    top: 68%;
+    top: 90%;
     left: 36%;
     z-index: 1;
     cursor: pointer;
@@ -128,7 +162,7 @@ body {margin: 4px;
     position: absolute;
     height: 140px;
     width: 190px;
-    top: 72%;
+    top: 92%;
     left: 60%;
     z-index: 1;
     cursor: pointer;
@@ -140,7 +174,7 @@ body {margin: 4px;
     position: absolute;
     height: 180px;
     width: 230px;
-    top: 70%;
+    top: 90%;
     left: 59%;
     z-index: 1;
     cursor: pointer;
@@ -162,7 +196,7 @@ body {margin: 4px;
     height: 175px;
     width: 125px;
     top: 38%;
-    left: 48%;
+    left: 58%;
     z-index: 1;
     cursor: pointer;
     background-color: green;
@@ -174,7 +208,7 @@ body {margin: 4px;
     height: 225px;
     width: 175px;
     top: 36%;
-    left: 46%;
+    left: 56%;
     z-index: 1;
     background-color: blue;
     opacity: 0.1;
@@ -195,7 +229,7 @@ body {margin: 4px;
      height: 175px;
     width: 125px;
     top: 34%;
-    left: 66%;
+    left: 76%;
     z-index: 1;
     cursor: pointer;
     background-color: purple;
@@ -207,7 +241,7 @@ body {margin: 4px;
     height: 225px;
     width: 175px;
     top: 32%;
-    left: 64%;
+    left: 74%;
     z-index: 1;
     cursor: pointer;
     background-color: maroon;

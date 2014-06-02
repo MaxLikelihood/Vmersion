@@ -383,7 +383,7 @@ function render()
    /***********Robert's Color Pallet code********************/
 
    function sendColor(ws, red, green, blue) {
-      console.log("Web socket in sendColor " +ws);
+      console.log("Web socket in sendColor " +ws.url);
       ws.send('ledColor' + ','+ red + ',' + green + ',' + blue + '\n');
     }
 
@@ -408,8 +408,8 @@ function render()
       //   colorContext.strokeRect(squareX, squareY, colorSquareSize, colorSquareSize);
       // }
 
-      function selectColor(mouseDown, evt, ws){
-         var color_canvas = document.getElementById('colorCanvas');
+      function selectColor(mouseDown, colorCanvasId, evt, ws){
+         var color_canvas = document.getElementById(colorCanvasId);
          var mousePos = getMousePos(color_canvas, evt);
           var color = undefined;
 
@@ -435,18 +435,18 @@ function render()
           }
       }
       
-      function colorPickerInit(colorImageObj, ws){
+      function colorPickerInit(colorImageObj, colorCanvasId, ws){
         var padding = 0;
-        var color_canvas = document.getElementById('colorCanvas');
+        var color_canvas = document.getElementById(colorCanvasId);
         var colorContext = color_canvas.getContext('2d');
         var mouseDown = false;
-        console.log("Web socket in Colorpickerinit " +ws);
+        console.log("Web socket in Colorpickerinit " +ws.url);
         colorContext.strokeStyle = '#444';
         colorContext.lineWidth = 2;
 
         color_canvas.addEventListener('mousedown', function(ev) {
           mouseDown = true;
-          selectColor(mouseDown, ev, ws);
+          selectColor(mouseDown, colorCanvasId, ev, ws);
         }, false);
 
         color_canvas.addEventListener('mouseup', function() {
@@ -454,7 +454,7 @@ function render()
         }, false);
 
         color_canvas.addEventListener('mousemove', function(evt) {
-          selectColor(mouseDown, evt, ws);
+          selectColor(mouseDown, colorCanvasId, evt, ws);
          
         }, false);
 
@@ -547,6 +547,7 @@ function implement(){
   //var ws;  
   ws[0] = new WebSocket(ws_server[0]);
   ws[1] = new WebSocket(ws_server[1]);
+  ws[2] = new WebSocket(ws_server[2]);
   var canvas = document.getElementById("root");
   var parent = canvas.parentNode;
 
@@ -606,7 +607,7 @@ function implement(){
       var menuB = document.getElementById('menuBase');
       var Base = document.getElementById('Base');
       Base.onmouseover = function(){
-        menuB.style.display = "block"; menuB.style.position = "absolute"; menuB.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuB.style.height= '100px'; menuB.style.width= '100px'; menuB.style.top= '72%'; menuB.style.left= '37%'; menuB.style.zIndex= '2'; menuB.style.cursor= 'pointer';
+        menuB.style.display = "block"; menuB.style.position = "absolute"; menuB.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuB.style.height= '100px'; menuB.style.width= '100px'; menuB.style.top= '92%'; menuB.style.left= '37%'; menuB.style.zIndex= '2'; menuB.style.cursor= 'pointer';
         robotBase(ws[0]);
       };
       outB.onmouseout = function(){
@@ -630,15 +631,38 @@ function implement(){
       var menuLamp1 = document.getElementById('menuLamp1');
       var lamp1 = document.getElementById('Lamp1');
       lamp1.onmouseover = function(){
-      menuLamp1.style.display = "block"; menuLamp1.style.position = "absolute"; menuLamp1.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuLamp1.style.height= '150px'; menuLamp1.style.width= '150px'; menuLamp1.style.top= '39%'; menuLamp1.style.left= '15%'; menuLamp1.style.zIndex= '2'; menuLamp1.style.cursor= 'pointer';
+      menuLamp1.style.display = "block"; menuLamp1.style.position = "absolute"; menuLamp1.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuLamp1.style.height= '150px'; menuLamp1.style.width= '150px'; menuLamp1.style.top= '47%'; menuLamp1.style.left= '15%'; menuLamp1.style.zIndex= '2'; menuLamp1.style.cursor= 'pointer';
       lampMenu(ws[1]);
       
-     }
+     };
     
      outLamp1.onmouseout = function(){
        menuLamp1.style.display  = 'none';
-     }
+     };
 
+
+      /*****************Lamp2*******************************/
+
+    /***Extracting the most dominant color in the background using Color Thief*****/
+    // var col = document.getElementById('col');
+    // var colorThief = new ColorThief();
+    // var dominantCol = colorThief.getColor(col);
+    // console.log("Dominant color r,g,b values " + dominantCol);
+
+
+      var outLamp2 = document.getElementById('outerLamp2');
+      var menuLamp2 = document.getElementById('menuLamp2');
+      var lamp2 = document.getElementById('Lamp2');
+      lamp2.onmouseover = function(){
+      console.log("reached mouseover");
+      menuLamp2.style.display = "block"; menuLamp2.style.position = "absolute"; menuLamp2.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuLamp2.style.height= '150px'; menuLamp2.style.width= '150px'; menuLamp2.style.top= '42%'; menuLamp2.style.left= '40%'; menuLamp2.style.zIndex= '2'; menuLamp2.style.cursor= 'pointer';
+      lamp2Menu(ws[2]);
+      
+     };
+    
+     outLamp2.onmouseout = function(){
+       menuLamp2.style.display  = 'none';
+     };
 
 
       /***************The body******************/
@@ -647,7 +671,7 @@ function implement(){
       var menuBody = document.getElementById('menuBody');
       var Body = document.getElementById('Body');
       Body.onmouseover = function(){
-        menuBody.style.display = "block"; menuBody.style.position = "absolute"; menuBody.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuBody.style.height= '100px'; menuBody.style.width= '100px'; menuBody.style.top= '72%'; menuBody.style.left= '60%'; menuBody.style.zIndex= '2'; menuBody.style.cursor= 'pointer';
+        menuBody.style.display = "block"; menuBody.style.position = "absolute"; menuBody.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuBody.style.height= '100px'; menuBody.style.width= '100px'; menuBody.style.top= '92%'; menuBody.style.left= '60%'; menuBody.style.zIndex= '2'; menuBody.style.cursor= 'pointer';
         robotBody(ws[0]);
       };
       outBody.onmouseout = function(){
@@ -661,7 +685,7 @@ function implement(){
       var menuHead = document.getElementById('menuHead');
       var lampHead = document.getElementById('lampHead');
       lampHead.onmouseover = function(){
-        menuHead.style.display = "block"; menuHead.style.position = "absolute"; menuHead.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuHead.style.height= '150px'; menuHead.style.width= '100px'; menuHead.style.top= '38%'; menuHead.style.left= '48%'; menuHead.style.zIndex= '2'; menuHead.style.cursor= 'pointer';
+        menuHead.style.display = "block"; menuHead.style.position = "absolute"; menuHead.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuHead.style.height= '150px'; menuHead.style.width= '100px'; menuHead.style.top= '38%'; menuHead.style.left= '58%'; menuHead.style.zIndex= '2'; menuHead.style.cursor= 'pointer';
         robotHead(ws[0]);
       };
       outHead.onmouseout = function(){
@@ -674,7 +698,7 @@ function implement(){
       var menuHand = document.getElementById('menuHand');
       var Hand = document.getElementById('Hand');
       Hand.onmouseover = function(){
-        menuHand.style.display = "block"; menuHand.style.position = "absolute"; menuHand.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuHand.style.height= '150px'; menuHand.style.width= '100px'; menuHand.style.top= '34%'; menuHand.style.left= '66%'; menuHand.style.zIndex= '2'; menuHand.style.cursor= 'pointer';
+        menuHand.style.display = "block"; menuHand.style.position = "absolute"; menuHand.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuHand.style.height= '150px'; menuHand.style.width= '100px'; menuHand.style.top= '34%'; menuHand.style.left= '76%'; menuHand.style.zIndex= '2'; menuHand.style.cursor= 'pointer';
         robotHand(ws[0]);
       };
       outHand.onmouseout = function(){
