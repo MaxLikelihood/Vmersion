@@ -27,6 +27,7 @@ function robotBase(ws)
             fwBase.style.zIndex = 1;
             fwBase.style.color = 'black'; 
           }
+          playBeep();
       };
       fwBase.onmouseout = function(){
           fwBase.style.opacity = 1;
@@ -55,6 +56,7 @@ function robotBase(ws)
             bwBase.style.zIndex = 1;
             bwBase.style.color = 'black'; 
           }
+          playBeep();
       };
       bwBase.onmouseout = function(){
           bwBase.style.opacity = 1;
@@ -71,6 +73,7 @@ function robotBase(ws)
           ws.send("setMotorSpeed,0,100\n");
           speedBase.style.zIndex = 1;
           speedBase.style.color = 'blue';
+          playBeep();
       };
       speedBase.onmouseout = function(){
           speedBase.style.opacity = 1;

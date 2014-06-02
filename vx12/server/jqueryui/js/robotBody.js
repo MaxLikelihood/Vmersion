@@ -27,6 +27,7 @@ function robotBody(ws)
             fwBody.style.zIndex = 1;
             fwBody.style.color = 'black'; 
           }
+          playBeep();
       };
       fwBody.onmouseout = function(){
           fwBody.style.opacity = 1;
@@ -55,6 +56,7 @@ function robotBody(ws)
             bwBody.style.zIndex = 1;
             bwBody.style.color = 'black'; 
           }
+          playBeep();
       };
       bwBody.onmouseout = function(){
           bwBody.style.opacity = 1;
@@ -71,6 +73,7 @@ function robotBody(ws)
           ws.send("setMotorSpeed,1,100\n");
           speedBody.style.zIndex = 1;
           speedBody.style.color = 'blue';
+          playBeep();
       };
       speedBody.onmouseout = function(){
           speedBody.style.opacity = 1;

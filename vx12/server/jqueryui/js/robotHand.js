@@ -27,6 +27,7 @@ function robotHand(ws)
             fwHand.style.zIndex = 1;
             fwHand.style.color = 'black'; 
           }
+          playBeep();
       };
       fwHand.onmouseout = function(){
           fwHand.style.opacity = 1;
@@ -55,6 +56,7 @@ function robotHand(ws)
             bwHand.style.zIndex = 1;
             bwHand.style.color = 'black'; 
           }
+          playBeep();
       };
       bwHand.onmouseout = function(){
           bwHand.style.opacity = 1;
@@ -71,6 +73,7 @@ function robotHand(ws)
           ws.send("setMotorSpeed,3,100\n");
           speedHand.style.zIndex = 1;
           speedHand.style.color = 'blue';
+          playBeep();
       };
       speedHand.onmouseout = function(){
           speedHand.style.opacity = 1;

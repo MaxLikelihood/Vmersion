@@ -78,6 +78,7 @@ function createDiv()
     $('#welcome-text').text('Welcome, ' + document.getElementById('system-login-username').value + '.');
   }
   $('#welcome-message').fadeIn(2000);
+  playLoginSound();
   setTimeout(function(){$('#welcome-message').fadeOut(1500);}, 3500);
   mainDiv.appendChild(div);
 }

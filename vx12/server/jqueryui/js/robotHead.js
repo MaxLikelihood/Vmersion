@@ -13,6 +13,7 @@
           ws.send("LEDSwitch\n");
           cam1.style.zIndex = 1;
           cam1.style.color = 'blue';
+          playBeep();
       };
       cam1.onmouseout = function(){
           cam1.style.opacity = 1;
@@ -44,6 +45,7 @@
             fwHead.style.zIndex = 1;
             fwHead.style.color = 'black'; 
           }
+          playBeep();
       };
       fwHead.onmouseout = function(){
           fwHead.style.opacity = 1;
@@ -73,6 +75,7 @@
             bwHead.style.zIndex = 1;
             bwHead.style.color = 'black'; 
           }
+          playBeep();
       };
       bwHead.onmouseout = function(){
           bwHead.style.opacity = 1;
@@ -89,6 +92,7 @@
           ws.send("setMotorSpeed,2,100\n");
           speedHead.style.zIndex = 1;
           speedHead.style.color = 'blue';
+          playBeep();
       };
       speedHead.onmouseout = function(){
           speedHead.style.opacity = 1;
