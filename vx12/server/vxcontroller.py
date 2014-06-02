@@ -66,6 +66,8 @@ class VxController:
 		app['address'] = address
 		app['appHandler'] = appHandler
 		
+		# Set application name to unknown default
+		app['appName'] = 'unknown_app_' + appid
 		
 		# Add WebSocket handler	
 		app['wsHandler'] = None
@@ -153,5 +155,17 @@ class VxController:
 		
 	def getFontPreload(self, appid):
 		return self.apps[appid]['FONT']
+
+	def getAppHandlerPath(self, appName):
+		print "getAppHandlerPath::"+appName
+		for i in self.getConnectedApplications():
+			print "apps[" + str(i) + "][appName] :" + self.apps[i]['appName']
+			if self.apps[i]['appName'] == appName:
+				print "getAppHandlerPath::app "+appName+ " exist"
+				if self.apps[i]['wsHandlerPath'] is not None:
+					print "getAppHandlerPath::handler "+self.apps[i]['wsHandlerPath'] + " found"
+					return self.apps[i]['wsHandlerPath']
+				else:
+					return ""
 
 vx = VxController()

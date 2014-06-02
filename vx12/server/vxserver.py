@@ -58,6 +58,7 @@ class VxTCPConnection(object):
 		self.id = vx.registerApplication(client, self)
 		self.sendEvent("EVENT PRELOAD\n")
 		self.sendEvent("Checking Server Communication\n")
+		self.sendEvent("WHOISTHIS\n")
 		
 		self.read_line()
 
@@ -72,8 +73,11 @@ class VxTCPConnection(object):
 	def lineReceived(self, data):
 		try:
 			cmd = json.loads(data)
-			if cmd[u'name'] == 'PRELOAD':
+			if (u'name' in cmd) and (cmd[u'name'] == 'PRELOAD'):
 				vx.addFontPreload(self.id, cmd['args'][0], cmd['args'][1])
+			elif u'appName' in cmd:
+				vx.apps[self.id]['appName'] = cmd['appName'] 
+				print 'Registering Application: ' + vx.apps[self.id]['appName']
 			else:
 				vx.pushWebSocketEvent(self.id, cmd)
 		except ValueError:

@@ -13,6 +13,9 @@ from vxserver import VxTCPServer
 from websocketServer import VxWebSocketHandler
 
 from video import videoSocketHandler, videoFeed
+
+# import database websocket handler
+from database import databaseSocketHandler
 # Configuration
 import sys
 print(sys.version)
@@ -37,7 +40,8 @@ tcpServer.listen(tcpPort)
 # WebSocket Services
 websocketService = tornado.web.Application([
         (r"^/[0-9]+_Handler", VxWebSocketHandler),
-        (r"/video", videoSocketHandler)
+        (r"/video", videoSocketHandler),
+        (r"/database", databaseSocketHandler)
     ])
 websocketService.listen(websocketPort)
 
