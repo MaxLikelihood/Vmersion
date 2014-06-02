@@ -69,13 +69,13 @@ def videoFeed():
             else:
                 if (ksize > 1):
                     output = frost(image, ksize, weight)
-                    ksize -= 2
+                    ksize -= 10
                 elif (ksize == 1):
                     output = frost(image, ksize, weight)
                     ksize = 0
                 else:
                     output = image
-           # cv2.imshow("preview", output)
+            # cv2.imshow("preview", output)
             ws_send(numpy.array(cv2.imencode('.jpg', output, [int(cv2.IMWRITE_JPEG_QUALITY), 80])[1]).tostring()) 
         rval, image = vc.read()
 
