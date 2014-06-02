@@ -32,6 +32,8 @@ function lampMenu(ws)
       pallet.style.opacity = 0.5;
     }
     pallet.onmousedown = function(){
+          var canvas = document.getElementById('colorCanvas');
+          var tablet = document.getElementById("tablet");
           if(pallet.style.color == 'black')
           {
 
@@ -44,7 +46,9 @@ function lampMenu(ws)
             colorImageObj.onload = function() {
             var width = colorImageObj.width;
             var height = colorImageObj.height;
-            var context = document.getElementById('colorCanvas').getContext("2d");
+            canvas.style.visibility = "visible";
+            tablet.style.visibility = "visible";
+            var context = canvas.getContext("2d");
             context.drawImage(colorImageObj, 0, 0, 113, 132);
 
                    /*******Perspective****************/
@@ -62,11 +66,14 @@ function lampMenu(ws)
           else 
           {
             pallet.style.zIndex = 1;
+            canvas.style.visibility = "hidden";
+            tablet.style.visibility = "hidden";
             pallet.style.color = 'black'; 
+            
           }
       }
-    stop.onmouseout = function(){
-      stop.style.opacity = 1;
+    pallet.onmouseout = function(){
+      pallet.style.opacity = 1;
     }
 
 

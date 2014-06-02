@@ -573,7 +573,7 @@ function implement(){
       var menuB = document.getElementById('menuBase');
       var Base = document.getElementById('Base');
       Base.onmouseover = function(){
-        menuB.style.display = "block"; menuB.style.position = "absolute"; menuB.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuB.style.height= '150px'; menuB.style.width= '100px'; menuB.style.top= '72%'; menuB.style.left= '37%'; menuB.style.zIndex= '2'; menuB.style.cursor= 'pointer';
+        menuB.style.display = "block"; menuB.style.position = "absolute"; menuB.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuB.style.height= '100px'; menuB.style.width= '100px'; menuB.style.top= '72%'; menuB.style.left= '37%'; menuB.style.zIndex= '2'; menuB.style.cursor= 'pointer';
         robotBase(ws[0]);
       };
       outB.onmouseout = function(){
@@ -597,7 +597,7 @@ function implement(){
       var menuLamp1 = document.getElementById('menuLamp1');
       var lamp1 = document.getElementById('Lamp1');
       lamp1.onmouseover = function(){
-      menuLamp1.style.display = "block"; menuLamp1.style.position = "absolute"; menuLamp1.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuLamp1.style.height= '300px'; menuLamp1.style.width= '150px'; menuLamp1.style.top= '39%'; menuLamp1.style.left= '15%'; menuLamp1.style.zIndex= '2'; menuLamp1.style.cursor= 'pointer';
+      menuLamp1.style.display = "block"; menuLamp1.style.position = "absolute"; menuLamp1.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuLamp1.style.height= '150px'; menuLamp1.style.width= '150px'; menuLamp1.style.top= '39%'; menuLamp1.style.left= '15%'; menuLamp1.style.zIndex= '2'; menuLamp1.style.cursor= 'pointer';
       lampMenu(ws[1]);
       
      }
@@ -614,7 +614,7 @@ function implement(){
       var menuBody = document.getElementById('menuBody');
       var Body = document.getElementById('Body');
       Body.onmouseover = function(){
-        menuBody.style.display = "block"; menuBody.style.position = "absolute"; menuBody.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuBody.style.height= '150px'; menuBody.style.width= '100px'; menuBody.style.top= '72%'; menuBody.style.left= '60%'; menuBody.style.zIndex= '2'; menuBody.style.cursor= 'pointer';
+        menuBody.style.display = "block"; menuBody.style.position = "absolute"; menuBody.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuBody.style.height= '100px'; menuBody.style.width= '100px'; menuBody.style.top= '72%'; menuBody.style.left= '60%'; menuBody.style.zIndex= '2'; menuBody.style.cursor= 'pointer';
         robotBody(ws[0]);
       };
       outBody.onmouseout = function(){

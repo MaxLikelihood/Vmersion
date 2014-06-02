@@ -28,17 +28,19 @@
         <script src="jqueryui/js/prefixfree.min.js"></script>
         <link type="text/css" rel="Stylesheet" href="jqueryui/css/login.css" />
         
+        <!-- User Interface -->
 
+        <link type="text/css" rel="stylesheet" href="jqueryui/css/ui.css" />
 
 
         <script src="jqueryui/js/three.min.js"></script>
-		<script src="jqueryui/js/Three.js"></script>
-		<script src="jqueryui/js/Detector.js"></script>
-		<script src="jqueryui/js/stats.js"></script>
-		<script src="jqueryui/js/OrbitControls.js"></script>
-		<script src="jqueryui/js/THREEx.KeyboardState.js"></script>
-		<script src="jqueryui/js/THREEx.FullScreen.js"></script>
-		<script src="jqueryui/js/THREEx.WindowResize.js"></script>
+        <script src="jqueryui/js/Three.js"></script>
+        <script src="jqueryui/js/Detector.js"></script>
+        <script src="jqueryui/js/stats.js"></script>
+        <script src="jqueryui/js/OrbitControls.js"></script>
+        <script src="jqueryui/js/THREEx.KeyboardState.js"></script>
+        <script src="jqueryui/js/THREEx.FullScreen.js"></script>
+        <script src="jqueryui/js/THREEx.WindowResize.js"></script>
         
         <script src="jqueryui/js/ParticleEngine.js"></script>
         <script src="jqueryui/js/ParticleEngineExamples.js"></script>
@@ -139,239 +141,7 @@
 
         </script>
 
-        <style>
-        /************CSS starts here********************************/   
-
-            body {margin: 4px;
-                }
-
-
-            /*****The slanted div with all info *************/
-
-            .container {
-              width: 200px;
-              height: 200px;
-              top: 15%;
-              left: 50%;
-              /*border: 1px solid #CCC;*/
-              margin: 0 auto 40px;
-              position: absolute;
-              z-index: 2;
         
-            }
-
-            .box {
-              width: 250px;
-              height: 200px;
-            }
-
-
-            #blue {
-              -webkit-perspective: 600px;
-                 -moz-perspective: 600px;
-                   -o-perspective: 600px;
-                      perspective: 600px;
-            }
-
-            #blue .box {
-           
-              z-index: 2;
-              background-color: rgba(240, 177, 82, 0.2);
-              -webkit-transform: rotateY( -25deg );
-                 -moz-transform: rotateY( -25deg );
-                   -o-transform: rotateY( -25deg );
-                      transform: rotateY( -25deg );
-            }
-
-
-            /***********CSS for lamp1*******************/
-
-            #menuLamp1{
-                display: none;
-            }
-
-            #Lamp1{
-                position: absolute;
-                height: 200px;
-                width: 250px;
-                top: 38%;
-                left: 13%;
-                z-index: 1;
-                cursor: pointer;
-                background-color: blue;
-                opacity: 0.1;
-            }
-        
-            #outerLamp1{
-                position: absolute;
-                height: 320px;
-                width: 375px;
-                top: 34%;
-                left: 11%;
-                z-index: 1;
-                cursor: pointer;
-                background-color: green;
-                opacity: 0.1;
-            }
-
-
-            /***********CSS for the robotic arm*************/
-
-
-            /********Base*************/
-
-            #menuBase{
-                display: none;
-            }
-
-
-            #Base{
-                position: absolute;
-                height: 175px;
-                width: 125px;
-                top: 72%;
-                left: 37%;
-                z-index: 1;
-                cursor: pointer;
-                background-color: yellow;
-                opacity: 0.1;
-            }
-
-            #outerBase{
-                position: absolute;
-                height: 225px;
-                width: 175px;
-                top: 70%;
-                left: 35%;
-                z-index: 1;
-                cursor: pointer;
-                background-color: white;
-                opacity: 0.1;
-            }
-
-           
-
-            /*********Body*****************/
-
-            #menuBody{
-                display: none;
-            }
-
-
-            #Body{
-                position: absolute;
-                 height: 175px;
-                width: 125px;
-                top: 72%;
-                left: 60%;
-                z-index: 1;
-                cursor: pointer;
-                background-color: red;
-                opacity: 0.1;
-            }
-
-            #outerBody{
-                position: absolute;
-                height: 225px;
-                width: 175px;
-                top: 70%;
-                left: 59%;
-                z-index: 1;
-                cursor: pointer;
-                background-color: blue;
-                opacity: 0.1;
-            }
-
-
-
-            /***********Head**************************/
-
-            #menuHead{
-                display: none;
-            }
-
-
-            #lampHead{
-                position: absolute;
-                height: 175px;
-                width: 125px;
-                top: 38%;
-                left: 48%;
-                z-index: 1;
-                cursor: pointer;
-                background-color: green;
-                opacity: 0.1;
-            }
-
-            #outerHead{
-                position: absolute;
-                height: 225px;
-                width: 175px;
-                top: 36%;
-                left: 46%;
-                z-index: 1;
-                background-color: blue;
-                opacity: 0.1;
-                cursor: pointer;
-            }
-
-
-            
-            /***********Hand******************/
-
-             #menuHand{
-                display: none;
-            }
-
-
-            #Hand{
-                position: absolute;
-                 height: 175px;
-                width: 125px;
-                top: 34%;
-                left: 66%;
-                z-index: 1;
-                cursor: pointer;
-                background-color: purple;
-                opacity: 0.1;
-            }
-
-            #outerHand{
-                position: absolute;
-                height: 225px;
-                width: 175px;
-                top: 32%;
-                left: 64%;
-                z-index: 1;
-                cursor: pointer;
-                background-color: maroon;
-                opacity: 0.1;
-            }
-
-            /******Robotic Arm css ends*******************/
-
-            .color {
-            height: 50px;
-            width: 50px;
-            float: left;
-            margin: 5px;
-            border: 1px solid #ccc;
-            }
-            #hue-box {
-                margin-left: 20px;
-                margin-top: 19px;
-            }   
-            .bordered {
-                border-top: 1px solid #ccc;
-            }
-    
-            #hex-box {
-                background-color: #fff;
-                position: relative;
-                top: -15px;
-                left: -60px;
-            }
-        </style>
         <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/css/smoothness/jquery-ui-1.10.0.custom.min.css" rel="stylesheet">
         </style>
@@ -427,18 +197,18 @@
 
         <div id ='Base'></div>
 
-        <div id = 'menuBase'>  <br>
-            
+        <div id = 'menuBase' class = "dropdown-menu" aria-labelledby = "dropdownMenu">  
+            &nbsp;
             <div id = 'speedBase' > 
-                <i class = "fa fa-cog fa-spin fa-2x"></i><br>
+                <i class = "fa fa-cog fa-spin fa-2x"></i><br><br>
             </div> 
-            
-            <div id = 'bwBase' > 
-                <i class="fa fa-long-arrow-left fa-2x" ></i> <br>  
+            &nbsp;
+            <div id = 'bwBase' style = "float:left;"> 
+                <i class="fa fa-long-arrow-left fa-3x" ></i> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             </div>
             
             <div id = 'fwBase' > 
-                <i class="fa fa-long-arrow-right fa-2x"></i>
+                <i class="fa fa-long-arrow-right fa-3x"></i>
              </div> 
             
         </div>
@@ -448,18 +218,18 @@
 
         <div id ='Body'></div>
 
-        <div id = 'menuBody'>  <br>
-            
+        <div id = 'menuBody' class = "dropdown-menu" aria-labelledby = "dropdownMenu">  <br>
+            &nbsp;
             <div id = 'speedBody' > 
-                <i class = "fa fa-cog fa-spin fa-2x"></i><br>
+                <i class = "fa fa-cog fa-spin fa-2x"></i><br><br>
             </div> 
-            
-            <div id = 'bwBody'> 
-                <i class="fa fa-long-arrow-left fa-2x" ></i> <br> 
+            &nbsp;
+            <div id = 'bwBody' style = "float: left;"> 
+                <i class="fa fa-long-arrow-left fa-3x" ></i> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             </div>
             
             <div id = 'fwBody' > 
-                <i class="fa fa-long-arrow-right fa-2x"></i>
+                <i class="fa fa-long-arrow-right fa-3x"></i>
              </div> 
             
         </div>
@@ -471,10 +241,10 @@
 
         <div id ='lampHead'></div>
 
-        <div id = 'menuHead'>  <br>
-            
+        <div id = 'menuHead' class = "dropdown-menu" aria-labelledby = "dropdownMenu">  <br>
+            &nbsp;
             <div id = 'camera1' style = "float:left;">
-                <i class="fa fa-lightbulb-o fa-2x" ></i> &nbsp; &nbsp;
+                <i class="fa fa-lightbulb-o fa-2x" ></i> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             </div>
             <div id = 'speedHead' > 
                 <i class = "fa fa-cog fa-spin fa-2x"></i><br><br>
@@ -496,7 +266,7 @@
 
         <div id ='Hand'></div>
 
-        <div id = 'menuHand'>  <br>
+        <div id = 'menuHand' class = "dropdown-menu" aria-labelledby = "dropdownMenu">  <br>
 
             <div id = 'speedHand' > 
                 <i class = "fa fa-cog fa-spin fa-2x"></i><br>
@@ -544,7 +314,7 @@
         <div class="span12">
           <div class="offset1"> -->
             <!--div class="row" style = "position: absolute; top: 36%; left: 11%;"-->
-            <i class = "fa fa-tablet" style = "color: white; font-size: 17em; position: absolute; top: 300px; left: 60px; z-index:5; opacity: 0.3;" >
+            <i id = "tablet" class = "fa fa-tablet" style = "color: white; font-size: 17em; position: absolute; top: 300px; left: 60px; z-index:5; opacity: 0.3; visibility: hidden;" >
             </i>
             <div id = "colorDiv" style = "position: absolute; top: 333px; left: 80px; z-index:5; background:transparent;" >
                 
