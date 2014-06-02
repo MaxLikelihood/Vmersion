@@ -36,10 +36,10 @@ var verified = true;
 
 function loadInterface() {
   if (verified)
-  {
+  {   
     $('#system-fb-login-btn').slideUp(1000);
     document.getElementById('system-default-login-btn').value = 'Verified';
-    setTimeout(function(){$('.login').fadeOut(2000);}, 2000);
+    setTimeout(function(){$('.login').fadeOut(2000);}, 2000);    
     setTimeout(function(){keyEvent();}, 5000);    
   } else {
     document.getElementById('system-default-login-btn').value = 'Incorrect Info';
@@ -49,8 +49,10 @@ function loadInterface() {
 
 function keyEvent() {
       unblur();
+      setTimeout(function(){console.log(getAppHandler('test_client'));}, 5000);
     	ws_server[0] = "ws://localhost:7070/1_Handler";
       ws_server[1] = "ws://localhost:7070/2_Handler";
+      
 			//document.getElementById("app").href="1/custom.css";
     	// }
     	// else if(actualKey == 'w')
@@ -59,7 +61,7 @@ function keyEvent() {
     	//     document.getElementById("app").href="2/custom.css";
     	// }	
       
-      implement();
+      //implement();
       loadCanvas();
       removeDiv();
 };
