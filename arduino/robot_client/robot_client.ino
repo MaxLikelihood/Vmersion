@@ -34,6 +34,7 @@ byte mac[] = {
 Display* display = NULL;
 char* host = "132.206.55.122";
 //char* host = "192.168.54.15";
+char* app_name = "robot_1";
 int port = 9090;
 int print_error = 0;
 boolean LEDState = false;
@@ -259,6 +260,26 @@ void call(char ** str)
          setMotorSpeed(toInt(str[1]), toInt(str[2]));     
       }
     }
+    else if (strcmp(str[0], "WHOISTHIS") == 0)
+    {
+      if(len(str) != 1)
+      {
+              return;
+      }
+      else{
+              Serial.print("Identity Query Received...");
+              Serial.print("Responding with: ");
+              Serial.print(app_name);
+              if (sendIdentity(app_name))
+              {
+                Serial.println("...Success");
+              }
+              else
+              {
+                Serial.println("...Failed");
+              }
+      }
+    }
   }
 }
 
@@ -342,4 +363,11 @@ void setMotorSpeed(int port, int speed)
   {
     motors[port]->setSpeed(speed);
   }
+}
+
+int sendIdentity(char* name)
+{
+  return ((socket_write(display->socket, "{ \"appName\":\"", strlen("{ \"appname\":\"")) == strlen("{ \"appname\":\"")) && 
+          (socket_write(display->socket, name, strlen(name)) == strlen(name)) && 
+          (socket_write(display->socket, "\" } \n", strlen("\" } \n")) == strlen("\" } \n")));
 }
