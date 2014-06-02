@@ -90,7 +90,8 @@
             });
 
             function queryHandler(){
-                requestAppHandler('test_client');
+                requestAppHandler('robot_1');
+                requestAppHandler('lamp_1');
             }
 
             function unblur()

@@ -40,7 +40,7 @@ function loadInterface() {
     $('#system-fb-login-btn').slideUp(1000);
     document.getElementById('system-default-login-btn').value = 'Verified';
     setTimeout(function(){$('.login').fadeOut(2000);}, 2000);    
-    setTimeout(function(){keyEvent();}, 5000);    
+    setTimeout(function(){keyEvent();}, 3000);    
   } else {
     document.getElementById('system-default-login-btn').value = 'Incorrect Info';
     setTimeout(function(){document.getElementById('system-default-login-btn').value = 'Try Again';}, 1500);
@@ -82,7 +82,7 @@ function keyEvent() {
     	//     document.getElementById("app").href="2/custom.css";
     	// }	
       
-      //implement();
+      implement();
       loadCanvas();
       removeDiv();
 };
