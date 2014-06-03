@@ -606,13 +606,20 @@ function implement(){
       var outB = document.getElementById('outerBase');
       var menuB = document.getElementById('menuBase');
       var Base = document.getElementById('Base');
+      menuB.style.position = "absolute"; menuB.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuB.style.height= '100px'; menuB.style.width= '100px'; menuB.style.top= '98%'; menuB.style.left= '40%'; menuB.style.zIndex= '2'; menuB.style.cursor= 'pointer';
       Base.onmouseover = function(){
-        menuB.style.display = "block"; menuB.style.position = "absolute"; menuB.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuB.style.height= '100px'; menuB.style.width= '100px'; menuB.style.top= '92%'; menuB.style.left= '37%'; menuB.style.zIndex= '2'; menuB.style.cursor= 'pointer';
+        menuB.style.display = "block"; 
+        menuB.style.animation = "move 1s linear 1 normal ";
+        menuB.style.webkitAnimation = "move 1s linear 1 normal";
         robotBase(ws[0]);
       };
       outB.onmouseout = function(){
-      menuB.style.display  = 'none';
-      }
+        menuB.style.animation = "moveout 1s linear 1 normal ";
+        menuB.style.webkitAnimation = "moveout 1s linear 1 normal"; 
+        setTimeout(function(){menuB.style.display  = 'none';},1000);
+      
+      
+      };
 
             /*************Code for color pallet web socket connection**************/  
 
@@ -630,15 +637,21 @@ function implement(){
       var outLamp1 = document.getElementById('outerLamp1');
       var menuLamp1 = document.getElementById('menuLamp1');
       var lamp1 = document.getElementById('Lamp1');
+      menuLamp1.style.position = "absolute"; menuLamp1.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuLamp1.style.height= '150px'; menuLamp1.style.width= '150px'; menuLamp1.style.top= '62%'; menuLamp1.style.left= '15%'; menuLamp1.style.zIndex= '2'; menuLamp1.style.cursor= 'pointer';
       lamp1.onmouseover = function(){
-      menuLamp1.style.display = "block"; menuLamp1.style.position = "absolute"; menuLamp1.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuLamp1.style.height= '150px'; menuLamp1.style.width= '150px'; menuLamp1.style.top= '47%'; menuLamp1.style.left= '15%'; menuLamp1.style.zIndex= '2'; menuLamp1.style.cursor= 'pointer';
+      menuLamp1.style.display = "block"; 
+      menuLamp1.style.animation = "move 1s linear 1 normal ";
+      menuLamp1.style.webkitAnimation = "move 1s linear 1 normal";
       lampMenu(ws[1]);
       
      };
     
      outLamp1.onmouseout = function(){
-       menuLamp1.style.display  = 'none';
+       menuLamp1.style.animation = "moveout 1s linear 1 normal ";
+       menuLamp1.style.webkitAnimation = "moveout 1s linear 1 normal"; 
+      setTimeout(function(){menuLamp1.style.display  = 'none';},1000);
      };
+
 
 
       /*****************Lamp2*******************************/
@@ -653,15 +666,24 @@ function implement(){
       var outLamp2 = document.getElementById('outerLamp2');
       var menuLamp2 = document.getElementById('menuLamp2');
       var lamp2 = document.getElementById('Lamp2');
+      
+      menuLamp2.style.position = "absolute"; menuLamp2.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuLamp2.style.height= '125px'; menuLamp2.style.width= '100px'; menuLamp2.style.top= '50%'; menuLamp2.style.left= '38%'; menuLamp2.style.zIndex= '2'; menuLamp2.style.cursor= 'pointer';
       lamp2.onmouseover = function(){
       console.log("reached mouseover");
-      menuLamp2.style.display = "block"; menuLamp2.style.position = "absolute"; menuLamp2.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuLamp2.style.height= '150px'; menuLamp2.style.width= '150px'; menuLamp2.style.top= '42%'; menuLamp2.style.left= '40%'; menuLamp2.style.zIndex= '2'; menuLamp2.style.cursor= 'pointer';
+      menuLamp2.style.display = "block"; 
+      menuLamp2.style.animation = "move 1s linear 1 normal ";
+      menuLamp2.style.webkitAnimation = "move 1s linear 1 normal";
+     // $("Lamp2").fadeIn("slow");
       lamp2Menu(ws[2]);
       
      };
     
      outLamp2.onmouseout = function(){
-       menuLamp2.style.display  = 'none';
+       menuLamp2.style.animation = "moveout 1s linear 1 normal ";
+       menuLamp2.style.webkitAnimation = "moveout 1s linear 1 normal"; 
+       setTimeout(function(){menuLamp2.style.display  = 'none';},1000);
+
+      // $("Lamp2").fadeOut("slow");
      };
 
 
@@ -670,13 +692,20 @@ function implement(){
       var outBody = document.getElementById('outerBody');
       var menuBody = document.getElementById('menuBody');
       var Body = document.getElementById('Body');
+      menuBody.style.position = "absolute"; menuBody.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuBody.style.height= '100px'; menuBody.style.width= '100px'; menuBody.style.top= '92%'; menuBody.style.left= '60%'; menuBody.style.zIndex= '2'; menuBody.style.cursor= 'pointer';
+        
       Body.onmouseover = function(){
-        menuBody.style.display = "block"; menuBody.style.position = "absolute"; menuBody.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuBody.style.height= '100px'; menuBody.style.width= '100px'; menuBody.style.top= '92%'; menuBody.style.left= '60%'; menuBody.style.zIndex= '2'; menuBody.style.cursor= 'pointer';
+        menuBody.style.display = "block"; 
+        menuBody.style.animation = "move 1s linear 1 normal ";
+        menuBody.style.webkitAnimation = "move 1s linear 1 normal";
         robotBody(ws[0]);
       };
       outBody.onmouseout = function(){
-      menuBody.style.display  = 'none';
-      }
+        menuBody.style.animation = "moveout 1s linear 1 normal ";
+        menuBody.style.webkitAnimation = "moveout 1s linear 1 normal"; 
+        setTimeout(function(){menuBody.style.display  = 'none';},1000);
+      };
+
 
       
       /*****The head portion***********/
@@ -684,26 +713,36 @@ function implement(){
       var outHead = document.getElementById('outerHead');
       var menuHead = document.getElementById('menuHead');
       var lampHead = document.getElementById('lampHead');
+      menuHead.style.position = "absolute"; menuHead.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuHead.style.height= '150px'; menuHead.style.width= '100px'; menuHead.style.top= '38%'; menuHead.style.left= '58%'; menuHead.style.zIndex= '2'; menuHead.style.cursor= 'pointer';
       lampHead.onmouseover = function(){
-        menuHead.style.display = "block"; menuHead.style.position = "absolute"; menuHead.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuHead.style.height= '150px'; menuHead.style.width= '100px'; menuHead.style.top= '38%'; menuHead.style.left= '58%'; menuHead.style.zIndex= '2'; menuHead.style.cursor= 'pointer';
+        menuHead.style.display = "block"; 
+        menuHead.style.animation = "move 1s linear 1 normal ";
+        menuHead.style.webkitAnimation = "move 1s linear 1 normal";
         robotHead(ws[0]);
       };
       outHead.onmouseout = function(){
-      menuHead.style.display  = 'none';
-      }
+      menuHead.style.animation = "moveout 1s linear 1 normal ";
+      menuHead.style.webkitAnimation = "moveout 1s linear 1 normal"; 
+      setTimeout(function(){menuHead.style.display  = 'none';},1000);
+      };
 
       /***************The hand******************/
 
       var outHand = document.getElementById('outerHand');
       var menuHand = document.getElementById('menuHand');
       var Hand = document.getElementById('Hand');
+      menuHand.style.position = "absolute"; menuHand.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuHand.style.height= '150px'; menuHand.style.width= '100px'; menuHand.style.top= '34%'; menuHand.style.left= '76%'; menuHand.style.zIndex= '2'; menuHand.style.cursor= 'pointer';
       Hand.onmouseover = function(){
-        menuHand.style.display = "block"; menuHand.style.position = "absolute"; menuHand.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuHand.style.height= '150px'; menuHand.style.width= '100px'; menuHand.style.top= '34%'; menuHand.style.left= '76%'; menuHand.style.zIndex= '2'; menuHand.style.cursor= 'pointer';
+        menuHand.style.display = "block"; 
+        menuHand.style.animation = "move 1s linear 1 normal ";
+        menuHand.style.webkitAnimation = "move 1s linear 1 normal";
         robotHand(ws[0]);
       };
       outHand.onmouseout = function(){
-      menuHand.style.display  = 'none';
-      }
+      menuHand.style.animation = "moveout 1s linear 1 normal ";
+      menuHand.style.webkitAnimation = "moveout 1s linear 1 normal"; 
+      setTimeout(function(){menuHand.style.display  = 'none';},1000);
+      };
 
 
        // color(ws[0]);

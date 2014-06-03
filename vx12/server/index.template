@@ -190,8 +190,8 @@
         <!-- Slanted div with information -->
 
       <section id="blue" class="container"> 
-            <div class = "box"> <br>
-            <div id = 'mainMenu'> Smart devices 
+            <div class = "box"> 
+            <div id = 'mainMenu'> Smart devices <br> <br>
                 <i class="fa fa-lightbulb-o fa-2x" ></i> Lamp1<br> <br>
             </div>
             <i id ='rotation1' class="fa fa-cog fa-spin fa-2x"></i> Robotic Arm<br> <br>
@@ -320,7 +320,7 @@
 
         <div id ='Lamp2'></div>
 
-        <div id = 'menuLamp2' class = "dropdown-menu" aria-labelledby = "dropdownMenu">  <br>
+        <div id = 'menuLamp2' class = "dropdown-menu" aria-labelledby = "dropdownMenu"> 
             <div id = 'switch2'>
                 <i class="fa fa-stop fa-2x" ></i> On/Off<br> <br>
             </div>
@@ -337,9 +337,9 @@
 
         <!-- Color Pallet for Lamp2 -->
 
-        <i id = "tablet2" class = "fa fa-tablet" style = "color: white; font-size: 17em; position: absolute; top: 200px; left: 280px; z-index:5; opacity: 0.3; visibility: hidden;" >
+        <i id = "tablet2" class = "fa fa-tablet" style = "color: white; font-size: 17em; position: absolute; top: 200px; left: 40%; z-index:5; opacity: 0.3; visibility: hidden;" >
             </i>
-        <div id = "colorDiv2" style = "position: absolute; top: 233px; left: 300px; z-index:5; background:transparent;" >
+        <div id = "colorDiv2" style = "position: absolute; top: 233px; left: 41%; z-index:5; background:transparent;" >
                 
             <canvas id="colorCanvas2" style = 'opacity: 0.2;' ></canvas>
 
@@ -352,9 +352,9 @@
         <div class="span12">
           <div class="offset1"> -->
             <!--div class="row" style = "position: absolute; top: 36%; left: 11%;"-->
-            <i id = "tablet" class = "fa fa-tablet" style = "color: white; font-size: 17em; position: absolute; top: 300px; left: 60px; z-index:5; opacity: 0.3; visibility: hidden;" >
+            <i id = "tablet" class = "fa fa-tablet" style = "color: white; font-size: 17em; position: absolute; top: 300px; left: 10%; z-index:5; opacity: 0.3; visibility: hidden;" >
             </i>
-            <div id = "colorDiv" style = "position: absolute; top: 333px; left: 80px; z-index:5; background:transparent;" >
+            <div id = "colorDiv" style = "position: absolute; top: 333px; left: 11%; z-index:5; background:transparent;" >
                 
                 <canvas id="colorCanvas" style = 'opacity: 0.2;' ></canvas>
                 
