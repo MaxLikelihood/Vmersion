@@ -67,6 +67,7 @@
         <script language='javascript'>
          // var ws_server = "ws://localhost:7070%(id)s";
           //var ws_server = "ws://localhost:7070";
+          var lightsConnected = false;
           var ws_server = new Array();
           ws_server[0] = "ws://192.168.54.15:7070";
             var ws_video = new WebSocket("ws://localhost:7070/video");
@@ -214,6 +215,35 @@
                 opacity: 0.1;
             }
 
+            /***********CSS for lamp2*******************/
+
+            #menuLamp2{
+                display: none;
+            }
+
+            #Lamp2{
+                position: absolute;
+                height: 200px;
+                width: 250px;
+                top: 80%;
+                left: 80%;
+                z-index: 1;
+                cursor: pointer;
+                background-color: blue;
+                opacity: 0.1;
+            }
+        
+            #outerLamp2{
+                position: absolute;
+                height: 320px;
+                width: 375px;
+                top: 76%;
+                left: 78%;
+                z-index: 1;
+                cursor: pointer;
+                background-color: green;
+                opacity: 0.1;
+            }
 
             /***********CSS for the robotic arm*************/
 
@@ -379,7 +409,6 @@
         
     </head>
     <body style='background-color: black; '>
-        <div id="jsPlumbContainer" style="position:relative;">
         <div id="fb-root"></div>
         <div align = "center" class="ui-widget-content" style="border: transparent; padding:0px; margin:0px; height:720px; width:1280px; background:transparent; z-index: 0;" >
             <canvas id="root" style="border: solid 0px #000000; position: absolute;"></canvas>
@@ -530,11 +559,29 @@
                 <i class="fa fa-sliders fa-2x"></i> Color Pallet<br> <br>
             </div>
             <div id = "connect1">
-                <i id = 'light1' class="fa fa-recycle fa-2x"></i> Connect devices<br> <br>
+                <i id = 'light1' class="fa fa-recycle fa-2x"></i> <span id="connect1_text">Connect devices</span><br> <br>
             </div>
         </div>
 
 
+        <!-- Lamp2 -->
+
+
+    <div id = 'outerLamp2'></div>
+
+        <div id ='Lamp2'></div>
+
+        <div id = 'menuLamp2' class = "dropdown-menu" aria-labelledby = "dropdownMenu">  <br>
+            <div id = 'switch'>
+                <i class="fa fa-stop fa-2x" ></i> On/Off<br> <br>
+            </div>
+            <div id = "pallet2">
+                <i class="fa fa-sliders fa-2x"></i> Color Pallet<br> <br>
+            </div>
+            <div id = "connect2">
+                <i id = 'light2' class="fa fa-recycle fa-2x"></i> <span id="connect2_text">Connect devices</span><br> <br>
+            </div>
+        </div>
 
 
        <!-- Color Pallete portion starts -->            
@@ -563,7 +610,6 @@
             <script src="colorlib/color-scheme.min.js"></script>
            
             <!--Color portion ends -->
-    </div>
     </body>
 </html>
 

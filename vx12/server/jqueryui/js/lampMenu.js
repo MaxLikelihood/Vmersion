@@ -68,7 +68,4 @@ function lampMenu(ws)
     stop.onmouseout = function(){
       stop.style.opacity = 1;
     }
-
-
-
 }

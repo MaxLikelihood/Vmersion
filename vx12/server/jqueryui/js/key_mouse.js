@@ -349,9 +349,14 @@ function render()
 
    /***********Robert's Color Pallet code********************/
 
-   function sendColor(ws, red, green, blue) {
-      console.log("Web socket in sendColor " +ws);
-      ws.send('ledColor' + ','+ red + ',' + green + ',' + blue + '\n');
+   function sendColor(wSocket, red, green, blue) {
+      
+      if (lightsConnected) {
+        ws[1].send('ledColor' + ','+ red + ',' + green + ',' + blue + '\n');
+        ws[2].send('ledColor' + ','+ red + ',' + green + ',' + blue + '\n');
+      } else {
+        wSocket.send('ledColor' + ','+ red + ',' + green + ',' + blue + '\n');
+      }
     }
 
     function getMousePos(colorCanvas, evt) {
@@ -606,6 +611,22 @@ function implement(){
        menuLamp1.style.display  = 'none';
      }
 
+
+      /*****************Lamp2*******************************/
+
+
+      var outLamp2 = document.getElementById('outerLamp2');
+      var menuLamp2 = document.getElementById('menuLamp2');
+      var lamp2 = document.getElementById('Lamp2');
+      lamp2.onmouseover = function(){
+      menuLamp2.style.display = "block"; menuLamp2.style.position = "absolute"; menuLamp2.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuLamp2.style.height= '300px'; menuLamp2.style.width= '150px'; menuLamp2.style.top= '39%'; menuLamp2.style.left= '15%'; menuLamp2.style.zIndex= '2'; menuLamp2.style.cursor= 'pointer';
+      lampMenu(ws[2]);
+      
+     }
+    
+     outLamp2.onmouseout = function(){
+       menuLamp2.style.display  = 'none';
+     }
 
 
       /***************The body******************/

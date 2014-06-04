@@ -1,7 +1,6 @@
 from tornado.websocket import WebSocketHandler
 import cv2, numpy
 import logging
-from PIL import ImageFilter
 
 sockets = []
 frosted = True
@@ -59,8 +58,8 @@ def videoFeed():
     global frosted
     cv2.namedWindow("preview")
     vc = cv2.VideoCapture(0)
-    vc.set(cv2.cv.CV_CAP_PROP_FRAME_WIDTH, 1280)
-    vc.set(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT, 720)
+    # vc.set(cv2.cv.CV_CAP_PROP_FRAME_WIDTH, 1280)
+    # vc.set(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT, 720)
     rval, image = vc.read()
     while True:
         if image is not None:

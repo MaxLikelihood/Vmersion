@@ -13,6 +13,9 @@ function robotBase(ws)
         fwBase.style.opacity = 0.5;
         
       }
+      $("#fwBase").mouseenter(function() {
+        playBeep();
+      });
       fwBase.onmousedown = function(){
           if(fwBase.style.color == 'black')
           {
@@ -27,7 +30,7 @@ function robotBase(ws)
             fwBase.style.zIndex = 1;
             fwBase.style.color = 'black'; 
           }
-          playBeep();
+          
       };
       fwBase.onmouseout = function(){
           fwBase.style.opacity = 1;
