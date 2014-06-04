@@ -383,9 +383,13 @@ function render()
 
    /***********Robert's Color Pallet code********************/
 
-   function sendColor(ws, red, green, blue) {
-      console.log("Web socket in sendColor " +ws.url);
-      ws.send('ledColor' + ','+ red + ',' + green + ',' + blue + '\n');
+   function sendColor(wSocket, red, green, blue) {
+      if (lightsConnected) {
+        ws[1].send('ledColor' + ','+ red + ',' + green + ',' + blue + '\n');
+        ws[2].send('ledColor' + ','+ red + ',' + green + ',' + blue + '\n');
+      } else {
+        wSocket.send('ledColor' + ','+ red + ',' + green + ',' + blue + '\n');
+      }
     }
 
     function getMousePos(colorCanvas, evt) {

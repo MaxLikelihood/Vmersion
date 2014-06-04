@@ -66,11 +66,12 @@
         <script type="text/javascript" src="jqueryui/js/sounds.js"></script>
 
         <!-- Dragging Connections -->
-        <script type="text/javascript" src="jqueryui/js/jquery.jsPlumb.js"></script>
+        <!-- <script type="text/javascript" src="jqueryui/js/jquery.jsPlumb.js"></script> -->
         <script type="text/javascript" src="jqueryui/js/connections.js"></script>
 
 
         <script language='javascript'>
+        var lightsConnected = false;
          // var ws_server = "ws://localhost:7070%(id)s";
           //var ws_server = "ws://localhost:7070";
           var ws_server = new Array();
@@ -308,7 +309,7 @@
                 <i class="fa fa-sliders fa-2x"></i> Color Pallet<br> <br>
             </div>
             <div id = "connect1">
-                <i id = 'light1' class="fa fa-recycle fa-2x"></i> Connect devices<br> <br>
+                <i id = 'light1' class="fa fa-recycle fa-2x"></i> <span id="connect1_text">Connect devices</span><br> <br>
             </div>
         </div>
 
@@ -329,7 +330,7 @@
                 <i class="fa fa-sliders fa-2x"></i> Color Pallet<br> <br>
             </div>
             <div id = "connect2">
-                <i id = 'light2' class="fa fa-recycle fa-2x"></i> Connect devices<br> <br>
+                <i id = 'light2' class="fa fa-recycle fa-2x"></i> <span id="connect2_text">Connect devices</span><br> <br>
             </div>
         </div>
 
