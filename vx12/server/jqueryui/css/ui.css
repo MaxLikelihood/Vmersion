@@ -21,7 +21,7 @@ body {margin: 4px;
   /*border: 1px solid #CCC;*/
   margin: 0 auto 40px;
   position: absolute;
-  z-index: 2;
+  z-index: 0;
 
 }
 
@@ -40,7 +40,6 @@ body {margin: 4px;
 }
 
 #blue .box {
-
   z-index: 2;
   background-color: rgba(240, 177, 82, 0.2);
   -webkit-transform: rotateY( -25deg );

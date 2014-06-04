@@ -114,6 +114,7 @@ function createDiv()
   playLoginSound();
   setTimeout(function(){$('#welcome-message').fadeOut(1500);}, 3500);
   mainDiv.appendChild(div);
+  $('#blue').fadeIn(3500);
 }
 
 function loadCanvas() {
@@ -637,7 +638,7 @@ function implement(){
       var outLamp1 = document.getElementById('outerLamp1');
       var menuLamp1 = document.getElementById('menuLamp1');
       var lamp1 = document.getElementById('Lamp1');
-      menuLamp1.style.position = "absolute"; menuLamp1.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuLamp1.style.height= '150px'; menuLamp1.style.width= '150px'; menuLamp1.style.top= '62%'; menuLamp1.style.left= '15%'; menuLamp1.style.zIndex= '2'; menuLamp1.style.cursor= 'pointer';
+      menuLamp1.style.position = "absolute"; menuLamp1.style.backgroundColor = 'rgba(0, 30, 80, 0.2)'; menuLamp1.style.height= '150px'; menuLamp1.style.width= '150px'; menuLamp1.style.top= '62%'; menuLamp1.style.left= '15%'; menuLamp1.style.zIndex= '2'; menuLamp1.style.cursor= 'pointer';
       lamp1.onmouseover = function(){
       menuLamp1.style.display = "block"; 
       menuLamp1.style.animation = "move 1s linear 1 normal ";
@@ -667,7 +668,7 @@ function implement(){
       var menuLamp2 = document.getElementById('menuLamp2');
       var lamp2 = document.getElementById('Lamp2');
       
-      menuLamp2.style.position = "absolute"; menuLamp2.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuLamp2.style.height= '125px'; menuLamp2.style.width= '100px'; menuLamp2.style.top= '50%'; menuLamp2.style.left= '38%'; menuLamp2.style.zIndex= '2'; menuLamp2.style.cursor= 'pointer';
+      menuLamp2.style.position = "absolute"; menuLamp2.style.backgroundColor = 'rgba(0, 30, 80, 0.2)'; menuLamp2.style.height= '125px'; menuLamp2.style.width= '100px'; menuLamp2.style.top= '50%'; menuLamp2.style.left= '38%'; menuLamp2.style.zIndex= '2'; menuLamp2.style.cursor= 'pointer';
       lamp2.onmouseover = function(){
       console.log("reached mouseover");
       menuLamp2.style.display = "block"; 
@@ -713,7 +714,7 @@ function implement(){
       var outHead = document.getElementById('outerHead');
       var menuHead = document.getElementById('menuHead');
       var lampHead = document.getElementById('lampHead');
-      menuHead.style.position = "absolute"; menuHead.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuHead.style.height= '150px'; menuHead.style.width= '100px'; menuHead.style.top= '38%'; menuHead.style.left= '58%'; menuHead.style.zIndex= '2'; menuHead.style.cursor= 'pointer';
+      menuHead.style.position = "absolute"; menuHead.style.backgroundColor = 'rgba(0, 30, 80, 0.2)'; menuHead.style.height= '150px'; menuHead.style.width= '100px'; menuHead.style.top= '38%'; menuHead.style.left= '58%'; menuHead.style.zIndex= '2'; menuHead.style.cursor= 'pointer';
       lampHead.onmouseover = function(){
         menuHead.style.display = "block"; 
         menuHead.style.animation = "move 1s linear 1 normal ";
@@ -731,7 +732,7 @@ function implement(){
       var outHand = document.getElementById('outerHand');
       var menuHand = document.getElementById('menuHand');
       var Hand = document.getElementById('Hand');
-      menuHand.style.position = "absolute"; menuHand.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuHand.style.height= '150px'; menuHand.style.width= '100px'; menuHand.style.top= '34%'; menuHand.style.left= '76%'; menuHand.style.zIndex= '2'; menuHand.style.cursor= 'pointer';
+      menuHand.style.position = "absolute"; menuHand.style.backgroundColor = 'rgba(0, 30, 80, 0.2)'; menuHand.style.height= '150px'; menuHand.style.width= '100px'; menuHand.style.top= '34%'; menuHand.style.left= '76%'; menuHand.style.zIndex= '2'; menuHand.style.cursor= 'pointer';
       Hand.onmouseover = function(){
         menuHand.style.display = "block"; 
         menuHand.style.animation = "move 1s linear 1 normal ";

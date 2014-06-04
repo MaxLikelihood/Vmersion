@@ -59,8 +59,8 @@ body{
 
 .login{
 	position: absolute;
-	top: calc(35% - 75px);
-	left: calc(35% - 50px);
+	top: calc(50% - 75px);
+	left: calc(43% - 50px);
 	height: 150px;
 	width: 350px;
 	padding: 10px;
@@ -141,8 +141,8 @@ body{
 
 #welcome-message {
 	position: absolute; 
-    top: 40%;
-	left: 30%; 
+    top: 52%;
+	left: 33%; 
     height: 100px; 
     width: 800px; 
 }
