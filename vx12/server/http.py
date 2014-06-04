@@ -39,7 +39,9 @@ _mime_types = {
 	'png':'image/png',
 	'ttf':'font/truetype',
 	'otf':'font/opentype',
-	'pde':'application/processing'}
+	'pde':'application/processing',
+	'mp3' : 'audio/mpeg',
+	'wav': 'audio/wav'}
 
 class VxHTTPServer(tornado.httpserver.HTTPServer):
 	isLeaf = True
@@ -222,7 +224,7 @@ class VxHTTPServer(tornado.httpserver.HTTPServer):
 # 			self.render_Application(request, "test.template")
 # 		elif re.match("/\d+$", request.path):
 # 			self.render_Application(request)
- 		elif re.match(".+\.(css|js|gif|png|jpeg|jpg|ttf|otf|eot|svg)$", request.path):
+ 		elif re.match(".+\.(css|js|gif|png|jpeg|jpg|ttf|otf|eot|svg|mp3|wav)$", request.path):
  			f = request.path.split('/', 1)[-1]
  			print "looking for " + f
  			self.render_Static(request, f)

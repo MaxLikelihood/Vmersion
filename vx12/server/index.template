@@ -164,7 +164,7 @@
         <div id="fb-root"></div>
         <div align = "center" class="ui-widget-content" style="border: transparent; padding:0px; margin:0px; height:720px; width:1280px; background:transparent; z-index: 0;" >
             <canvas id="root" style="border: solid 0px #000000; position: absolute;"></canvas>
-            <img id="image"  style="position:absolute; top:0px; left:0px; z-index: 0; width: 100%;"/>
+            <img id="image"  style="position:absolute; top:0px; left:0px; z-index: 0; width: 100%;" />
         </div>
         
         <!-- Welcome Message -->
@@ -373,7 +373,11 @@
            
             <!--Color portion ends -->
     </div>
-    </body>
+
+   <!--  <audio controls>
+        <source src= "Record_0004.wav" type = "audio/wav">
+    </audio>
+ -->    </body>
 </html>
 
 

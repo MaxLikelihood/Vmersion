@@ -11,7 +11,7 @@ function robotBody(ws)
       fwBody.style.color = 'black';
       fwBody.onmouseover = function(){
         fwBody.style.opacity = 0.5;
-        
+        playBeep();
       }
       fwBody.onmousedown = function(){
           if(fwBody.style.color == 'black')
@@ -39,7 +39,7 @@ function robotBody(ws)
       bwBody.style.color = 'black';
       bwBody.onmouseover = function(){
         bwBody.style.opacity = 0.5;
-        
+        playBeep();
       }
       bwBody.onmousedown = function(){
           //cam1.style.backgroundColor = 'blue';

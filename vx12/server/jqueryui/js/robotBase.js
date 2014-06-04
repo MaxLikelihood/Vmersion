@@ -2,17 +2,21 @@
 
 function robotBase(ws)
   {
-
+      console.log('robotBase invocation');
 
       /********** Controls for the Base *********************/
       /**  Note: Index: 0, Direction - Forward: 1, Backward: -1, Stop: 0   **/
 
       var fwBase = document.getElementById('fwBase');
       fwBase.style.color = 'black';
+      $('#fwBase').mouseenter(function(){
+        window.alert("mouseenter called");
+        playBeep();
+      });
       fwBase.onmouseover = function(){
         fwBase.style.opacity = 0.5;
-        
-      }
+       }; 
+
       fwBase.onmousedown = function(){
           if(fwBase.style.color == 'black')
           {
@@ -27,7 +31,7 @@ function robotBase(ws)
             fwBase.style.zIndex = 1;
             fwBase.style.color = 'black'; 
           }
-          playBeep();
+          
       };
       fwBase.onmouseout = function(){
           fwBase.style.opacity = 1;
@@ -56,7 +60,7 @@ function robotBase(ws)
             bwBase.style.zIndex = 1;
             bwBase.style.color = 'black'; 
           }
-          playBeep();
+          
       };
       bwBase.onmouseout = function(){
           bwBase.style.opacity = 1;
