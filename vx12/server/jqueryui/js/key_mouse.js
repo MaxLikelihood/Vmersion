@@ -383,9 +383,13 @@ function render()
 
    /***********Robert's Color Pallet code********************/
 
-   function sendColor(ws, red, green, blue) {
-      console.log("Web socket in sendColor " +ws.url);
-      ws.send('ledColor' + ','+ red + ',' + green + ',' + blue + '\n');
+   function sendColor(wSocket, red, green, blue) {
+      if (lightsConnected) {
+        ws[1].send('ledColor' + ','+ red + ',' + green + ',' + blue + '\n');
+        ws[2].send('ledColor' + ','+ red + ',' + green + ',' + blue + '\n');
+      } else {
+        wSocket.send('ledColor' + ','+ red + ',' + green + ',' + blue + '\n');
+      }
     }
 
     function getMousePos(colorCanvas, evt) {
@@ -609,14 +613,15 @@ function implement(){
       var menuB = document.getElementById('menuBase');
       var Base = document.getElementById('Base');
       menuB.style.position = "absolute"; menuB.style.backgroundColor = 'rgba(240, 177, 82, 0.2)'; menuB.style.height= '100px'; menuB.style.width= '100px'; menuB.style.top= '98%'; menuB.style.left= '40%'; menuB.style.zIndex= '2'; menuB.style.cursor= 'pointer';
-      Base.onmouseover = function(){
+      //Base.onmouseover = function(){
+        $('#Base').mouseenter(function(){
         baseOver = true;
         console.log('base mouseover');
         menuB.style.display = "block"; 
         menuB.style.animation = "move 1s linear 1 normal ";
         menuB.style.webkitAnimation = "move 1s linear 1 normal";
         robotBase(ws[0]);
-      };
+      });
       Base.onmouseout = function () {
         baseOver = false;
       };
@@ -703,6 +708,7 @@ function implement(){
       lamp2Over = false;
      };
      outLamp2.onmouseout = function(){
+      menuLamp2.style.display  = 'none';
       setTimeout(function () {
             if (!lamp2Over){
        menuLamp2.style.animation = "moveout 1.5s linear 1 normal ";

@@ -75,7 +75,7 @@ def videoFeed():
                     ksize = 0
                 else:
                     output = image
-            # cv2.imshow("preview", output)
+            cv2.imshow("preview", output)
             ws_send(numpy.array(cv2.imencode('.jpg', output, [int(cv2.IMWRITE_JPEG_QUALITY), 80])[1]).tostring()) 
         rval, image = vc.read()
 

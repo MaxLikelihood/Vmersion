@@ -9,12 +9,11 @@ function robotBase(ws)
 
       var fwBase = document.getElementById('fwBase');
       fwBase.style.color = 'black';
-      $('#fwBase').mouseenter(function(){
-        window.alert("mouseenter called");
-        playBeep();
-      });
+
       fwBase.onmouseover = function(){
         fwBase.style.opacity = 0.5;
+        playBeep();
+
        }; 
 
       fwBase.onmousedown = function(){

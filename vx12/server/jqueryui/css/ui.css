@@ -76,7 +76,8 @@ body {margin: 4px;
     z-index: 1;
     cursor: pointer;
     background-color: green;
-    opacity: 0;
+    opacity: 0.3;
+    visibility : hidden;
 }
 
 
@@ -98,6 +99,7 @@ body {margin: 4px;
     cursor: pointer;
     background-color: blue;
     opacity: 0;
+
 }
 
 #outerLamp2{
@@ -109,7 +111,8 @@ body {margin: 4px;
     z-index: 1;
     cursor: pointer;
     background-color: green;
-    opacity: 0;
+    opacity: 0.3;
+    visibility: hidden;
 }
 
 
