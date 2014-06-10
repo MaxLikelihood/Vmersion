@@ -10,6 +10,7 @@ byte mac[] = {
 Display* display = NULL;
 char* host = "132.206.55.122";
 //char* host = "192.168.54.15";
+char* app_name = "lamp_1";
 int port = 9090;
 int print_error = 0;
 int REDPIN = 3;
@@ -179,6 +180,26 @@ void call(char ** str)
                                ledColor(toInt(str[1]), toInt(str[2]), toInt(str[3]));
 			}
 		}
+                else if (strcmp(str[0], "WHOISTHIS") == 0)
+		{
+                        if(len(str) != 1)
+                        {
+                                return;
+                        }
+                        else{
+                                Serial.print("Identity Query Received...");
+                                Serial.print("Responding with: ");
+                                Serial.print(app_name);
+                                if (sendIdentity(app_name))
+                                {
+                                  Serial.println("...Success");
+                                }
+                                else
+                                {
+                                  Serial.println("...Failed");
+                                }
+                        }
+                }
 	}
 }
 
@@ -188,4 +209,11 @@ void ledColor(int r, int g, int b)
   analogWrite(REDPIN, 255 - r);
   analogWrite(GREENPIN, 255 - g);
   analogWrite(BLUEPIN, 255 - b);
+}
+
+int sendIdentity(char* name)
+{
+  return ((socket_write(display->socket, "{ \"appName\":\"", strlen("{ \"appname\":\"")) == strlen("{ \"appname\":\"")) && 
+          (socket_write(display->socket, name, strlen(name)) == strlen(name)) && 
+          (socket_write(display->socket, "\" } \n", strlen("\" } \n")) == strlen("\" } \n")));
 }
