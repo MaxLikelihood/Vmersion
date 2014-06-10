@@ -12,7 +12,7 @@ function robotBase(ws)
 
       fwBase.onmouseover = function(){
         fwBase.style.opacity = 0.5;
-        playBeep();
+        
 
        }; 
 
@@ -30,7 +30,7 @@ function robotBase(ws)
             fwBase.style.zIndex = 1;
             fwBase.style.color = 'black'; 
           }
-          
+          playBeep();
       };
       fwBase.onmouseout = function(){
           fwBase.style.opacity = 1;
@@ -59,7 +59,7 @@ function robotBase(ws)
             bwBase.style.zIndex = 1;
             bwBase.style.color = 'black'; 
           }
-          
+          playBeep();
       };
       bwBase.onmouseout = function(){
           bwBase.style.opacity = 1;

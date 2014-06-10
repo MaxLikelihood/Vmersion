@@ -11,7 +11,7 @@ function robotBody(ws)
       fwBody.style.color = 'black';
       fwBody.onmouseover = function(){
         fwBody.style.opacity = 0.5;
-        playBeep();
+        // playBeep();
       }
       fwBody.onmousedown = function(){
           if(fwBody.style.color == 'black')
