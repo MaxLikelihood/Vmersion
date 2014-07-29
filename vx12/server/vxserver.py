@@ -57,8 +57,6 @@ class VxTCPConnection(object):
 		logging.info('application at ' + address[0] + ' connected')
 		self.id = vx.registerApplication(client, self)
 		self.sendEvent("EVENT PRELOAD\n")
-		self.sendEvent("Checking Server Communication\n")
-		self.sendEvent("WHOISTHIS\n")
 		
 		self.read_line()
 

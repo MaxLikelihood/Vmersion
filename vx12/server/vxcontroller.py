@@ -141,7 +141,7 @@ class VxController:
 	# Send an event to the web socket server (ie to the Browser)
 	def pushWebSocketEvent(self, appid, event):
 		wsockHandler = self.apps[appid]['wsHandler']
-		wsockHandler.sendEvent(event)
+		# wsockHandler.sendEvent(event)
 
 	# Send event to vx server (ie to the C app)
 	def pushVxEvent(self, handlerPath, event):
