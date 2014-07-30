@@ -29,6 +29,8 @@ import command
 import json
 import struct
 import binascii
+import time
+import thread
 
 # 
 # We could run some validation on the JSON befor esending it back 
@@ -56,8 +58,7 @@ class VxTCPConnection(object):
 		self.stream = stream
 		logging.info('application at ' + address[0] + ' connected')
 		self.id = vx.registerApplication(client, self)
-		self.sendEvent("EVENT PRELOAD\n")
-		
+		thread.start_new_thread(self.pushUpdate, ())
 		self.read_line()
 
 	
@@ -69,6 +70,7 @@ class VxTCPConnection(object):
 		self.stream.read_until('\n', self.lineReceived)
 
 	def lineReceived(self, data):
+		print data
 		try:
 			cmd = json.loads(data)
 			if (u'name' in cmd) and (cmd[u'name'] == 'PRELOAD'):
@@ -104,6 +106,12 @@ class VxTCPConnection(object):
 			# Prevent overflow attempts by limiting communication to the C side to 256-length buffers
 			event = event[0:255]
 		self.stream.write(str(event))
+
+	def pushUpdate(self):
+		while True:
+			self.sendEvent("EVENT PRELOAD aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n")
+			time.sleep(5)
+
 
 
 class VxTCPServer(TCPServer):
